@@ -2,9 +2,9 @@
 
 namespace Mito;
 
+use Mito\Commands\MitoCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Mito\Commands\MitoCommand;
 
 class MitoServiceProvider extends PackageServiceProvider
 {
