@@ -7,7 +7,7 @@
         "mito"
     ],
     "homepage": "https://github.com/mitophp/mito",
-    "license": "AGPL-3.0-or-later",
+    "license": "MIT",
     "authors": [
         {
             "name": "Oliver Servín",
@@ -22,6 +22,7 @@
     },
     "require-dev": {
         "nunomaduro/collision": "^5.3",
+        "nunomaduro/larastan": "^0.7.13",
         "orchestra/testbench": "^6.15",
         "pestphp/pest": "^1.18",
         "pestphp/pest-plugin-laravel": "^1.1",
