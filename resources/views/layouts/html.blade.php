@@ -7,6 +7,12 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ asset('vendor/mito/css/app.css') }}">
+
+        <!-- Scripts -->
+        <script src="{{ asset('vendor/mito/js/app.js') }}" defer></script>
+
         @livewireStyles
     </head>
     <body>

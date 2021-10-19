@@ -17,6 +17,7 @@ class MitoServiceProvider extends PackageServiceProvider
         $package
             ->name('mito')
             ->hasViews()
+            ->hasAssets()
             ->hasRoute('web')
             ->hasMigration('create_mito_posts_table');
     }
