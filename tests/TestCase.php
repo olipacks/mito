@@ -3,6 +3,7 @@
 namespace Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Livewire\LivewireServiceProvider;
 use Mito\MitoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -21,6 +22,7 @@ class TestCase extends Orchestra
     {
         return [
             MitoServiceProvider::class,
+            LivewireServiceProvider::class,
         ];
     }
 
@@ -28,9 +30,7 @@ class TestCase extends Orchestra
     {
         config()->set('database.default', 'testing');
 
-        /*
-        $migration = include __DIR__.'/../database/migrations/create_mito_table.php.stub';
+        $migration = include __DIR__.'/../database/migrations/create_mito_posts_table.php.stub';
         $migration->up();
-        */
     }
 }

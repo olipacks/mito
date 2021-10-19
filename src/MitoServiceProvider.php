@@ -2,24 +2,31 @@
 
 namespace Mito;
 
-use Mito\Commands\MitoCommand;
+use Illuminate\View\Compilers\BladeCompiler;
+use Mito\Http\Livewire\ShowPosts;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Livewire\Livewire;
+use Mito\Http\Livewire\CreatePost;
+use Mito\Http\Livewire\EditPost;
 
 class MitoServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('mito')
-            ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_mito_table')
-            ->hasCommand(MitoCommand::class);
+            ->hasRoute('web')
+            ->hasMigration('create_mito_posts_table');
+    }
+
+    public function packageRegistered()
+    {
+        $this->app->afterResolving(BladeCompiler::class, function () {
+            Livewire::component('mito::posts.show-posts', ShowPosts::class);
+            Livewire::component('mito::posts.create-post', CreatePost::class);
+            Livewire::component('mito::posts.edit-post', EditPost::class);
+        });
     }
 }
