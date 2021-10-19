@@ -3,12 +3,12 @@
 namespace Mito;
 
 use Illuminate\View\Compilers\BladeCompiler;
-use Mito\Http\Livewire\ShowPosts;
-use Spatie\LaravelPackageTools\Package;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Livewire\Livewire;
 use Mito\Http\Livewire\CreatePost;
 use Mito\Http\Livewire\EditPost;
+use Mito\Http\Livewire\ShowPosts;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class MitoServiceProvider extends PackageServiceProvider
 {
