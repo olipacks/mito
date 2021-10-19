@@ -12,7 +12,7 @@ return new class extends Migration
             $table->bigIncrements('id');
 
             $table->string('slug')->unique();
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('markdown')->nullable();
             $table->string('status')->default('draft');
             $table->dateTime('published_at')->nullable();

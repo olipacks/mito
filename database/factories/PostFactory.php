@@ -12,12 +12,10 @@ class PostFactory extends Factory
 
     public function definition()
     {
-        $title = $this->faker->words(3, true);
         $status = $this->faker->randomElement(['draft', 'published']);
 
         return [
-            'title' => $title,
-            'slug' => Str::slug($title),
+            'slug' => NULL,
             'markdown' => $this->faker->paragraph(),
             'status' => $status,
             'published_at' => $status === 'published' ? $this->faker->dateTimeBetween('-1 month') : NULL,

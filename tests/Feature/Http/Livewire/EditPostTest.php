@@ -4,41 +4,29 @@ use Mito\Http\Livewire\EditPost;
 use Mito\Models\Post;
 
 beforeEach(function () {
-    $this->post = Post::factory()->create();
+    $this->post = Post::factory()->create([
+        'slug' => 'slug',
+    ]);
 });
 
 it('can update post', function () {
     $this->livewire(EditPost::class, ['post' => $this->post])
-        ->set('post.title', '::title::')
-        ->set('post.slug', 'slug')
         ->set('post.markdown', '::markdown::')
         ->call('save');
 
-    expect(Post::whereTitle('::title::')->exists())->toBeTrue();
+    expect(Post::whereMarkdown('::markdown::')->exists())->toBeTrue();
 });
 
-test('title is required', function () {
+it('can update a post with an untitled slug if markdown is empty', function () {
     $this->livewire(EditPost::class, ['post' => $this->post])
-        ->set('post.title', '')
-        ->set('post.slug', 'slug')
-        ->set('post.markdown', '::markdown::')
-        ->call('save')
-        ->assertHasErrors(['post.title' => 'required']);
-});
+        ->set('post.markdown', '')
+        ->call('save');
 
-test('slug is required', function () {
-    $this->livewire(EditPost::class, ['post' => $this->post])
-        ->set('post.title', '::title::')
-        ->set('post.slug', '')
-        ->set('post.markdown', '::markdown::')
-        ->call('save')
-        ->assertHasErrors(['post.slug' => 'required']);
+    expect(Post::whereSlug('untitled')->exists())->toBeTrue();
 });
 
 it('is redirected to post page after creation', function () {
     $this->livewire(EditPost::class, ['post' => $this->post])
-        ->set('post.title', '::title::')
-        ->set('post.slug', 'title')
         ->set('post.markdown', '::markdown::')
         ->call('save')
         ->assertRedirect(route('mito.posts.index'));

@@ -2,32 +2,36 @@
 
 namespace Mito\Http\Livewire;
 
+use Illuminate\Support\Str;
 use Livewire\Component;
 use Mito\Models\Post;
 
 class CreatePost extends Component
 {
-    public $title;
-    public $slug;
-    public $markdown;
+    public Post $post;
 
     protected $rules = [
-        'title' => 'required',
-        'slug' => 'required',
-        'markdown' => 'sometimes',
+        'post.markdown' => 'sometimes',
     ];
 
-    public function render()
+    public function mount()
     {
-        return view('mito::livewire.create-post')->layout('mito::layouts.html');
+        $this->post = new Post;
     }
 
     public function create()
     {
-        Post::create(
-            $this->validate()
-        );
+        $this->validate();
+
+        $this->post->fill([
+            'slug' => Str::slug($this->post->title),
+        ])->save();
 
         return redirect()->to(route('mito.posts.index'));
+    }
+
+    public function render()
+    {
+        return view('mito::livewire.create-post')->layout('mito::layouts.html');
     }
 }
