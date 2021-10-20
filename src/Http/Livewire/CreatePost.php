@@ -16,7 +16,7 @@ class CreatePost extends Component
 
     public function mount()
     {
-        $this->post = new Post;
+        $this->post = new Post();
     }
 
     public function create()

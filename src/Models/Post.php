@@ -19,7 +19,8 @@ class Post extends Model
         return Str::after(collect(explode(PHP_EOL, $this->markdown))->first(), '# ');
     }
 
-    public function setSlugAttribute($value) {
+    public function setSlugAttribute($value)
+    {
         if (empty($value)) {
             $value = 'untitled';
         }
@@ -31,7 +32,8 @@ class Post extends Model
         $this->attributes['slug'] = $slug;
     }
 
-    public function incrementSlug($slug) {
+    public function incrementSlug($slug)
+    {
         $original = $slug;
         $count = 2;
 
