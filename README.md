@@ -9,6 +9,8 @@ THIS PACKAGE IS IN DEVELOPMENT, PLEASE DO NOT USE IN PRODUCTION YET
 
 Mito is a blog publishing platform with a minimal UI to manage a markdown blog publication into a new or existent Laravel project.
 
+https://user-images.githubusercontent.com/7003648/138785945-59cb4c6d-e401-4097-98d2-6fb50c34565b.mp4
+
 ## Installation
 
 You may use Composer to install Mito into your new or existent Laravel project:
