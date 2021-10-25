@@ -7,9 +7,9 @@
 
 namespace Mito\Components;
 
-use Illuminate\View\Component;
-use Illuminate\Support\Str;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Str;
+use Illuminate\View\Component;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\GithubFlavoredMarkdownConverter;
 use League\CommonMark\MarkdownConverterInterface;

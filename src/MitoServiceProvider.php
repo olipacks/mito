@@ -4,9 +4,9 @@ namespace Mito;
 
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
+use Mito\Components\Markdown;
 use Mito\Http\Livewire\EditPost;
 use Mito\Http\Livewire\ShowPosts;
-use Mito\Components\Markdown;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
