@@ -30,6 +30,10 @@ Finally, run the `migrate` Artisan command:
 php artisan migrate
 ```
 
+### Visit the Dashboard
+
+After performing all these steps, you should be able to visit the Mito Dashboard at `/mito`.
+
 ## Updates
 
 After each update, make sure you run these commands:
