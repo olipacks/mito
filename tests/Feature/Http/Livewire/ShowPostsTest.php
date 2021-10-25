@@ -1,13 +1,16 @@
 <?php
 
+use Mito\Http\Livewire\ShowPosts;
 use Mito\Models\Post;
 
-it('can show posts', function () {
-    $post = Post::factory()->create();
+it('can redirect to edit latest draft', function () {
+    $draft = Post::factory()->draft()->create();
 
-    $response = $this->get('mito/posts');
+    $this->livewire(ShowPosts::class)
+        ->assertRedirect(route('mito.posts.edit', $draft));
+});
 
-    $response
-        ->assertStatus(200)
-        ->assertSee($post->title);
+it('can render empty drafts component if there are no drafts', function () {
+    $this->livewire(ShowPosts::class)
+        ->assertViewIs('mito::livewire.empty');
 });

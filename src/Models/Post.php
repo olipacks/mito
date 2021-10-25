@@ -16,15 +16,23 @@ class Post extends Model
 
     public function getTitleAttribute()
     {
-        return Str::after(collect(explode(PHP_EOL, $this->markdown))->first(), '# ');
+        return Str::after(collect(explode(PHP_EOL, $this->markdown))
+            ->first(function ($value) {
+                return Str::of($value)->trim()->isNotEmpty();
+            }), '# ');
+    }
+
+    public function getLeadAttribute()
+    {
+        return collect(explode(PHP_EOL, $this->markdown))
+            ->slice(1)
+            ->first(function ($value) {
+                return Str::of($value)->trim()->isNotEmpty();
+            });
     }
 
     public function setSlugAttribute($value)
     {
-        if (empty($value)) {
-            $value = 'untitled';
-        }
-
         if (static::whereSlug($slug = Str::slug($value))->exists()) {
             $slug = $this->incrementSlug($slug);
         }
@@ -42,5 +50,28 @@ class Post extends Model
         }
 
         return $slug;
+    }
+
+    public function isEmpty()
+    {
+        return Str::of($this->markdown)->trim()->isEmpty();
+    }
+
+    public function isPublished(): bool
+    {
+        return $this->status === 'published';
+    }
+
+    public function isDraft(): bool
+    {
+        return $this->status === 'draft';
+    }
+
+    public function markAsPublished()
+    {
+        $this->update([
+            'published_at' => $this->published_at ?? $this->freshTimestamp(),
+            'status' => 'published',
+        ]);
     }
 }

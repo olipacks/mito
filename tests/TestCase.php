@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use BladeUIKit\BladeUIKitServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Mito\MitoServiceProvider;

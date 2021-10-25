@@ -18,6 +18,7 @@
     "require": {
         "php": "^8.0",
         "illuminate/contracts": "^8.37",
+        "league/commonmark": "^2.0",
         "livewire/livewire": "^2.6",
         "spatie/laravel-package-tools": "^1.4.3"
     },

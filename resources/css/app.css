@@ -1,3 +1,9 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+@font-face {
+    font-family: Writer;
+    src: url('/vendor/mito/font/Writer-Regular.ttf');
+    font-weight: 400;
+}

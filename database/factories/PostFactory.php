@@ -15,10 +15,9 @@ class PostFactory extends Factory
         $status = $this->faker->randomElement(['draft', 'published']);
 
         return [
-            'slug' => NULL,
             'markdown' => $this->faker->paragraph(),
             'status' => $status,
-            'published_at' => $status === 'published' ? $this->faker->dateTimeBetween('-1 month') : NULL,
+            'published_at' => $status === 'published' ? $this->faker->dateTimeBetween('-1 month') : null,
         ];
     }
 
@@ -34,6 +33,15 @@ class PostFactory extends Factory
     {
         return $this->state([
             'status' =>  'draft',
+        ]);
+    }
+
+    public function emptyDraft()
+    {
+        return $this->state([
+            'markdown' => null,
+            'status' =>  'draft',
+            'published_at' => null,
         ]);
     }
 }

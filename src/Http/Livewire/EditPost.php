@@ -9,26 +9,50 @@ use Mito\Models\Post;
 class EditPost extends Component
 {
     public Post $post;
+    public $type;
 
     protected $rules = [
         'post.markdown' => 'nullable|sometimes',
     ];
 
-    public function save()
+    public function mount(Post $post)
     {
+        $this->type = $post->status;
+    }
+
+    public function updated($propertyName)
+    {
+        if ($propertyName !== 'post.markdown') {
+            return;
+        }
+
         $this->validate();
 
+        $this->post->save();
+    }
+
+    public function publish()
+    {
         $this->post->fill([
             'slug' => Str::slug($this->post->title),
-        ]);
+        ])->save();
 
-        $this->post->save();
+        $this->post->markAsPublished();
 
-        return redirect()->to(route('mito.posts.index'));
+        $this->type = 'published';
+    }
+
+    public function createDraft()
+    {
+        $draft = Post::create();
+
+        return redirect()->to(route('mito.posts.edit', $draft));
     }
 
     public function render()
     {
-        return view('mito::livewire.edit-post')->layout('mito::layouts.html');
+        return view('mito::livewire.edit-post', [
+            'posts' => Post::where('status', $this->type)->latest($this->type === 'published' ? 'published_at' : 'created_at')->get(),
+        ])->layout('mito::layouts.html');
     }
 }

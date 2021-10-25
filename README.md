@@ -1,4 +1,4 @@
-THIS PACKAGE IS IN DEVELOPMENT, DO NOT USE IN PRODUCTION YET
+THIS PACKAGE IS IN DEVELOPMENT, PLEASE DO NOT USE IN PRODUCTION YET
 
 # A minimal Laravel package for blog publishing
 
@@ -7,15 +7,36 @@ THIS PACKAGE IS IN DEVELOPMENT, DO NOT USE IN PRODUCTION YET
 [![GitHub Code Style Action Status](https://img.shields.io/github/workflow/status/mitophp/mito/Check%20&%20fix%20styling?label=code%20style)](https://github.com/mitophp/mito/actions?query=workflow%3A"Check+%26+fix+styling"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/mitophp/mito.svg?style=flat-square)](https://packagist.org/packages/mitophp/mito)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
+Mito is a blog publishing platform with a minimal UI to manage a markdown blog publication into a new or existent Laravel project.
 
 ## Installation
 
-WIP
+You may use Composer to install Mito into your new or existent Laravel project:
 
-## Usage
+```bash
+composer require mitophp/mito
+```
 
-WIP
+After installing Mito, you may publish its resources using the `vendor:publish` Artisan command:
+
+```bash
+php artisan vendor:publish --tag mito-migrations
+php artisan vendor:publish --tag mito-assets
+```
+
+Finally, run the `migrate` Artisan command:
+
+```bash
+php artisan migrate
+```
+
+## Updates
+
+After each update, make sure you run these commands:
+
+```bash
+php artisan vendor:publish --tag mito-assets --force
+```
 
 ## Testing
 
