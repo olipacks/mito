@@ -7,15 +7,7 @@
         <!-- Main area -->
         <main class="min-w-0 flex-1 border-t border-gray-200 xl:flex">
             <section class="min-w-0 flex-1 h-full flex flex-col overflow-hidden xl:order-last">
-                <div class="min-h-0 flex-1 overflow-y-auto">
-                    <div class="bg-white pt-16 pb-6 shadow min-h-full flex">
-                        <div class="flex-1 min-h-full px-4 sm:flex sm:justify-center sm:items-baseline sm:px-6 lg:px-8">
-                            <div class="min-h-full sm:w-0 sm:flex-1 relative" style="max-width: 65ch;">
-                                {{ $centerColumn }}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {{ $centerColumn }}
             </section>
 
             <aside class="hidden xl:block xl:flex-shrink-0 xl:order-last">

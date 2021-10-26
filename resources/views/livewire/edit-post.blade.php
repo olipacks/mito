@@ -4,6 +4,8 @@
     </x-slot>
 
     <x-slot name="centerColumn">
+        <x-mito::post-toolbar />
+
         <x-mito::post-editor wire:model="post.markdown" :post="$post" />
     </x-slot>
 
