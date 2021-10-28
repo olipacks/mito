@@ -24,10 +24,10 @@
             </form>
         </div>
     </div>
-    <nav aria-label="Post list" class="min-h-0 flex-1 overflow-y-auto">
-        <ul class="border-b border-gray-100 divide-y divide-gray-100">
+    <nav aria-label="Post list" class="min-h-0 flex-1 overflow-y-auto px-3">
+        <ul class="space-y-1">
             @foreach($posts as $post)
-                <li class="relative bg-white py-5 px-6 hover:bg-gray-50 focus-within:ring-2 focus-within:ring-inset focus-within:ring-blue-600">
+                <li class="relative py-5 px-3 {{ $post->is($currentPost) ? 'bg-gray-100' : 'bg-white hover:bg-gray-50' }} focus-within:ring-2 focus-within:ring-inset focus-within:ring-purple-600 rounded-md">
                     <div class="flex justify-between space-x-3">
                         <div class="min-w-0 flex-1">
                             <a href="{{ route('mito.posts.edit', $post) }}" class="block focus:outline-none">

@@ -10,7 +10,7 @@
     <!-- Menu button area -->
     <div class="absolute inset-y-0 right-0 pr-4 flex items-center sm:pr-6 lg:hidden">
         <!-- Mobile menu button -->
-        <button @click="open = true" type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-600">
+        <button @click="open = true" type="button" class="-mr-2 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-600">
             <span class="sr-only">Open main menu</span>
             <!-- Heroicon name: outline/menu -->
             <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

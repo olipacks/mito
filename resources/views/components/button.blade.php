@@ -5,7 +5,7 @@ $hyperscript = $href ? 'a' : 'button';
 
 switch ($color) {
     case 'white':
-        $colorClasses = 'border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:border-blue-300 focus:shadow-outline-blue active:text-gray-800 active:bg-gray-50';
+        $colorClasses = 'border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:border-purple-300 focus:shadow-outline-purple active:text-gray-800 active:bg-gray-50';
         break;
     case 'primary':
     default:

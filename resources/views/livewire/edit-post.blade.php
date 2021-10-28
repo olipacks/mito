@@ -14,6 +14,6 @@
     </x-slot>
 
     <x-slot name="leftColumn">
-        <x-mito::post-list :type="$type" :posts="$posts" />
+        <x-mito::post-list :type="$type" :posts="$posts" :currentPost="$post" />
     </x-slot>
 </x-mito::post-layout>
