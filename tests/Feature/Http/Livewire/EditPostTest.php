@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Mito\Http\Livewire\EditPost;
 use Mito\Models\Post;
 
@@ -37,4 +40,42 @@ it('redirects to edit draft page after creation', function () {
     $draftPost = Post::where('id', '!=', $this->post->id)->where('status', 'draft')->first();
 
     $response->assertRedirect(route('mito.posts.edit', $draftPost));
+});
+
+it('can store an image', function () {
+    Storage::fake('public');
+
+    $image = UploadedFile::fake()->image('image.png');
+
+    $this->livewire(EditPost::class, ['post' => $this->post])
+        ->set('image', $image);
+
+    $uploadedFilePath = Str::of($this->post->fresh()->markdown)
+        ->after('![]')
+        ->between('(', ')')
+        ->after('/storage/');
+
+    Storage::disk('public')->assertExists($uploadedFilePath);
+});
+
+it('can add markdown image syntax on image upload', function () {
+    Storage::fake('public');
+
+    $image = UploadedFile::fake()->image('image.png');
+
+    $this->livewire(EditPost::class, ['post' => $this->post])
+        ->set('image', $image);
+
+    expect(Str::of($this->post->fresh()->markdown)->contains('![]'))
+        ->toBeTrue();
+});
+
+it('can dispatch notify event on image upload', function () {
+    Storage::fake('public');
+
+    $image = UploadedFile::fake()->image('image.png');
+
+    $this->livewire(EditPost::class, ['post' => $this->post])
+        ->set('image', $image)
+        ->assertDispatchedBrowserEvent('notify');
 });

@@ -8,8 +8,11 @@ use Mito\Models\Post;
 
 class EditPost extends Component
 {
+    use HasImages;
+
     public Post $post;
     public $type;
+    public $image;
 
     protected $rules = [
         'post.markdown' => 'nullable|sometimes',
@@ -29,6 +32,19 @@ class EditPost extends Component
         $this->validate();
 
         $this->post->save();
+    }
+
+    public function updatedImage()
+    {
+        $imagePath = $this->storeImage($this->image);
+
+        $imageUrl = $this->getImageUrl($imagePath);
+
+        $this->post->markdown = Str::of($this->post->markdown)->append("![]({$imageUrl})");
+
+        $this->post->save();
+
+        $this->dispatchBrowserEvent('notify', 'Image added!');
     }
 
     public function publish()

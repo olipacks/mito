@@ -23,4 +23,6 @@
             </aside>
         </main>
     </div>
+
+    <x-mito::notification />
 </div>
