@@ -74,4 +74,11 @@ class Post extends Model
             'status' => 'published',
         ]);
     }
+
+    public function markAsDraft()
+    {
+        $this->update([
+            'status' => 'draft',
+        ]);
+    }
 }

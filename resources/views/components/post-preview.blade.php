@@ -3,20 +3,53 @@
     <!-- Toolbar-->
     <div class="h-16 flex flex-col justify-center">
         <div class="px-4 sm:px-6">
-            @if ($post->isDraft())
-                <form wire:submit.prevent="publish" class="py-3 flex flex-col">
-                    <x-mito::button :disabled="$post->isEmpty()">
-                        <x-mito::icon.check class="h-5 w-5 mr-2.5" />
-                        <span>Publish</span>
-                    </x-mito::button>
-                </form>
-            @else
-                <div class="flex justify-end">
-                    <span class="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-purple-100 text-purple-800">
-                        Published
-                    </span>
+            <div class="py-3 flex justify-end">
+                <div>
+                    <div class="flex space-x-3">
+                        @if ($post->isPublished())
+                            <form wire:submit.prevent="save">
+                                <x-mito::button color="transparent" :disabled="! $post->isDirty('markdown')">
+                                    <span>Save changes</span>
+                                </x-mito::button>
+                            </form>
+                        @endif
+
+                        <x-mito::dropdown>
+                            <x-slot name="trigger">
+                                <x-mito::button color="transparent">
+                                    @if ($post->isDraft())
+                                        <div class="flex items-center">
+                                            <x-mito::icon.draft class="mr-2.5 -my-0.5 h-5 w-5 text-yellow-500" />
+                                            Unpublished
+                                        </div>
+                                    @else
+                                        <div class="flex items-center">
+                                            <x-mito::icon.published class="mr-2.5 -my-0.5 h-5 w-5 text-purple-500" />
+                                            Published
+                                        </div>
+                                    @endif
+                                </x-mito::button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-mito::dropdown.link wire:click.prevent="unpublish" href="/" :active="$post->isDraft()">
+                                    <div class="flex items-center">
+                                        <x-mito::icon.draft class="mr-2.5 h-5 w-5 text-yellow-500" />
+                                        Unpublished
+                                    </div>
+                                </x-mito::dropdown.link>
+
+                                <x-mito::dropdown.link wire:click.prevent="publish" href="/" :active="$post->isPublished()">
+                                    <div class="flex items-center">
+                                        <x-mito::icon.published class="mr-2.5 h-5 w-5 text-purple-500" />
+                                        Published
+                                    </div>
+                                </x-mito::dropdown.link>
+                            </x-slot>
+                        </x-mito::dropdown>
+                    </div>
                 </div>
-            @endif
+            </div>
         </div>
    </div>
 </div>

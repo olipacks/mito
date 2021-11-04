@@ -25,6 +25,10 @@ class EditPost extends Component
 
     public function updated($propertyName)
     {
+        if ($this->post->isPublished()) {
+            return;
+        }
+
         if ($propertyName !== 'post.markdown') {
             return;
         }
@@ -47,6 +51,15 @@ class EditPost extends Component
         $this->dispatchBrowserEvent('notify', 'Image added!');
     }
 
+    public function save()
+    {
+        $this->validate();
+
+        $this->post->save();
+
+        $this->dispatchBrowserEvent('notify', 'Saved!');
+    }
+
     public function publish()
     {
         $this->post->fill([
@@ -56,6 +69,17 @@ class EditPost extends Component
         $this->post->markAsPublished();
 
         $this->type = 'published';
+
+        $this->dispatchBrowserEvent('notify', 'Published!');
+    }
+
+    public function unpublish()
+    {
+        $this->post->markAsDraft();
+
+        $this->type = 'draft';
+
+        $this->dispatchBrowserEvent('notify', 'Unpublished!');
     }
 
     public function createDraft()
