@@ -114,6 +114,14 @@ it('can publish a draft', function () {
     expect($this->draft->fresh()->isPublished())->toBeTrue();
 });
 
+it('generates a slug on publish a draft with no custom slug', function () {
+
+});
+
+it('does not generate a slug on publish a draft with custom slug', function () {
+
+});
+
 it('can unpublish a published post', function () {
     $publishedPost = tap($this->draft)->markAsPublished();
 
