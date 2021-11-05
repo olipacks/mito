@@ -62,8 +62,7 @@ class EditPost extends Component
 
     public function publish()
     {
-        if (is_null($this->post->custom_slug))
-        {
+        if (is_null($this->post->custom_slug)) {
             $this->post->fill([
                 'slug' => Str::slug($this->post->title),
             ])->save();

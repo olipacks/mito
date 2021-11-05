@@ -20,8 +20,7 @@ class ManagePostSettings extends ModalComponent
     {
         $this->validateOnly($propertyName);
 
-        if ($propertyName === 'post.custom_slug')
-        {
+        if ($propertyName === 'post.custom_slug') {
             $this->post->slug = $this->post->custom_slug;
         }
 
