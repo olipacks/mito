@@ -1,12 +1,10 @@
 <x-mito::post-layout>
-    <x-slot name="header">
-        <x-mito::navbar :currentType="$type" />
-    </x-slot>
-
     <x-slot name="centerColumn">
-        <x-mito::post-toolbar />
+        <x-mito::post-toolbar :post="$post" />
 
         <x-mito::post-editor wire:model="post.markdown" :post="$post" />
+
+        <x-mito::post-editor-toolbar />
     </x-slot>
 
     <x-slot name="rightColumn">
@@ -14,6 +12,6 @@
     </x-slot>
 
     <x-slot name="leftColumn">
-        <x-mito::post-list :type="$type" :posts="$posts" :currentPost="$post" />
+        <x-mito::post-list :currentType="$type" :posts="$posts" :currentPost="$post" />
     </x-slot>
 </x-mito::post-layout>

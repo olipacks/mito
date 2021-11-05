@@ -18,17 +18,10 @@ class ShowPosts extends Component
         return redirect()->to(route('mito.posts.edit', $draft));
     }
 
-    public function mount()
-    {
-        $latestPost = Post::where('status', $this->type)->latest()->first();
-
-        if ($latestPost) {
-            return redirect(route('mito.posts.edit', $latestPost));
-        }
-    }
-
     public function render()
     {
-        return view('mito::livewire.empty')->layout('mito::layouts.html');
+        return view('mito::livewire.show-posts', [
+            'posts' => Post::where('status', $this->type)->latest($this->type === 'published' ? 'published_at' : 'created_at')->get(),
+        ])->layout('mito::layouts.html');
     }
 }
