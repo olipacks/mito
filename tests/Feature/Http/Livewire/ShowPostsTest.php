@@ -3,14 +3,18 @@
 use Mito\Http\Livewire\ShowPosts;
 use Mito\Models\Post;
 
-it('can redirect to edit latest draft', function () {
-    $draft = Post::factory()->draft()->create();
+it('it can show all drafts', function () {
 
-    $this->livewire(ShowPosts::class)
-        ->assertRedirect(route('mito.posts.edit', $draft));
 });
 
-it('can render empty drafts component if there are no drafts', function () {
-    $this->livewire(ShowPosts::class)
-        ->assertViewIs('mito::livewire.empty');
+it('it can filter by published posts', function () {
+
+});
+
+it('it can filter by drafts', function () {
+
+});
+
+it('it can create a new draft', function () {
+
 });
