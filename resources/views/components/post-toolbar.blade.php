@@ -50,6 +50,9 @@
                             </div>
                         </x-slot>
                     </x-mito::dropdown>
+                    <x-mito::button.icon color="transparent" wire:click="$emit('openModal', 'mito::posts.manage-post-settings', {{ json_encode(['post' => $post->id]) }})">
+                        <x-mito::icon.settings class="h-4 w-4" />
+                    </x-mito::button.icon>
                 </div>
             </div>
         </div>
