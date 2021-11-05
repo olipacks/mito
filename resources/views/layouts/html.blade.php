@@ -15,7 +15,7 @@
 
         <livewire:styles />
     </head>
-    <body>
+    <body class="antialiased">
         {{ $slot }}
 
         <livewire:scripts />

@@ -5,11 +5,11 @@ $hyperscript = $href ? 'a' : 'button';
 
 switch ($color) {
     case 'transparent':
-        $colorClasses = 'border-transparent text-gray-700 bg-white hover:bg-gray-100 hover:border-gray-300 focus:border-purple-300 focus:shadow-outline-purple active:text-gray-800 active:bg-gray-50';
+        $colorClasses = 'border-transparent text-gray-600 bg-white hover:bg-gray-50 hover:text-gray-700 hover:border-gray-300 focus:border-purple-300 focus:shadow-outline-purple active:text-gray-800 active:bg-gray-50';
         $shadow = false;
         break;
     case 'white':
-        $colorClasses = 'border-gray-300 text-gray-700 bg-white hover:text-gray-500 focus:border-purple-300 focus:shadow-outline-purple active:text-gray-800 active:bg-gray-50';
+        $colorClasses = 'border-gray-300 text-gray-700 bg-white hover:bg-gray-50 focus:border-purple-300 focus:shadow-outline-purple active:text-gray-800 active:bg-gray-50';
         $shadow = true;
         break;
     case 'primary':

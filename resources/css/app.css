@@ -7,3 +7,7 @@
     src: url('/vendor/mito/font/Writer-Regular.ttf');
     font-weight: 400;
 }
+
+[x-cloak] {
+    display: none !important;
+}
