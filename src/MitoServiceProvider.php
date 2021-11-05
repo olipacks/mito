@@ -6,6 +6,7 @@ use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
 use Mito\Components\Markdown;
 use Mito\Http\Livewire\EditPost;
+use Mito\Http\Livewire\ManagePostSettings;
 use Mito\Http\Livewire\ShowPosts;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -28,6 +29,7 @@ class MitoServiceProvider extends PackageServiceProvider
         $this->app->afterResolving(BladeCompiler::class, function () {
             Livewire::component('mito::posts.edit-post', EditPost::class);
             Livewire::component('mito::posts.show-posts', ShowPosts::class);
+            Livewire::component('mito::posts.manage-post-settings', ManagePostSettings::class);
         });
     }
 }
