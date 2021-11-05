@@ -47,6 +47,10 @@
                                 </x-mito::dropdown.link>
                             </x-slot>
                         </x-mito::dropdown>
+
+                        <div class="flex items-center">
+                            <x-mito::button.settings color="transparent" wire:click="$emit('openModal', 'mito::posts.manage-post-settings', {{ json_encode(['post' => $post->id]) }})" />
+                        </div>
                     </div>
                 </div>
             </div>
