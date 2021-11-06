@@ -114,6 +114,25 @@ it('can publish a draft', function () {
     expect($this->draft->fresh()->isPublished())->toBeTrue();
 });
 
+it('generates a slug on publish a draft with no custom slug', function () {
+    $this->livewire(EditPost::class, ['post' => $this->draft])
+        ->call('publish');
+
+    expect($this->draft->slug)->toBeNull();
+    expect($this->draft->fresh()->slug)->not()->toBeNull();
+});
+
+it('does not generate a slug on publish a draft with custom slug', function () {
+    $this->draft->fill([
+        'slug' => 'custom-slug',
+    ])->save();
+
+    $this->livewire(EditPost::class, ['post' => $this->draft])
+        ->call('publish');
+
+    expect($this->draft->fresh()->slug)->toBe('custom-slug');
+});
+
 it('can unpublish a published post', function () {
     $publishedPost = tap($this->draft)->markAsPublished();
 

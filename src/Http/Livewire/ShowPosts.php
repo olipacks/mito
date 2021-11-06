@@ -7,16 +7,11 @@ use Mito\Models\Post;
 
 class ShowPosts extends Component
 {
+    use WithDraftCreation;
+
     public $type = 'draft';
 
     protected $queryString = ['type'];
-
-    public function createDraft()
-    {
-        $draft = Post::create();
-
-        return redirect()->to(route('mito.posts.edit', $draft));
-    }
 
     public function render()
     {

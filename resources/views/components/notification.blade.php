@@ -14,7 +14,7 @@
     }"
     aria-live="assertive"
     @notify.window="let message = $event.detail; add(message);"
-    class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6"
+    class="fixed inset-0 flex items-end px-4 py-6 pointer-events-none sm:p-6 z-20"
 >
     <div class="w-full flex flex-col items-center space-y-4 sm:items-start">
         <template x-for="(message, messageIndex) in messages" :key="messageIndex" hidden>

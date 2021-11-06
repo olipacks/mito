@@ -18,6 +18,7 @@
     <body class="antialiased">
         {{ $slot }}
 
+        @livewire('livewire-ui-modal')
         <livewire:scripts />
     </body>
 </html>

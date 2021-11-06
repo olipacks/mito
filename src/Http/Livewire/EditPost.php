@@ -9,6 +9,7 @@ use Mito\Models\Post;
 class EditPost extends Component
 {
     use HasImages;
+    use WithDraftCreation;
 
     public Post $post;
     public $type;
@@ -62,9 +63,11 @@ class EditPost extends Component
 
     public function publish()
     {
-        $this->post->fill([
-            'slug' => Str::slug($this->post->title),
-        ])->save();
+        if (is_null($this->post->slug)) {
+            $this->post->fill([
+                'slug' => Str::slug($this->post->title),
+            ])->save();
+        }
 
         $this->post->markAsPublished();
 
@@ -80,13 +83,6 @@ class EditPost extends Component
         $this->type = 'draft';
 
         $this->dispatchBrowserEvent('notify', 'Unpublished!');
-    }
-
-    public function createDraft()
-    {
-        $draft = Post::create();
-
-        return redirect()->to(route('mito.posts.edit', $draft));
     }
 
     public function render()

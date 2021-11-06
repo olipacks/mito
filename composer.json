@@ -20,7 +20,8 @@
         "illuminate/contracts": "^8.67",
         "league/commonmark": "^2.0",
         "livewire/livewire": "^2.7.2",
-        "spatie/laravel-package-tools": "^1.9.2"
+        "spatie/laravel-package-tools": "^1.9.2",
+        "wire-elements/modal": "^1.0"
     },
     "require-dev": {
         "nunomaduro/collision": "^5.3",
