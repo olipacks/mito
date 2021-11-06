@@ -15,7 +15,7 @@ it('can update post slug', function () {
     expect($this->post->fresh()->slug)->toBe('custom-slug');
 });
 
-it('it validates a required slug', function () {
+it('validates a required slug', function () {
     $response = $this->livewire(ManagePostSettings::class, ['post' => $this->post])
         ->set('slug', '')
         ->call('save', 'slug');
@@ -23,7 +23,7 @@ it('it validates a required slug', function () {
     $response->assertHasErrors(['slug' => 'required']);
 });
 
-it('it validates a unique', function () {
+it('validates a unique', function () {
     $post = Post::factory()->create(['slug' => 'custom-slug']);
 
     $response = $this->livewire(ManagePostSettings::class, ['post' => $this->post])
