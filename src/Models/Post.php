@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use Mito\Database\Factories\PostFactory;
 
 class Post extends Model
 {
@@ -16,8 +17,24 @@ class Post extends Model
     protected $guarded = [];
 
     protected $casts = [
+        'published_at' => 'date:Y-m-d H:i:s',
         'meta' => AsCollection::class,
     ];
+
+    protected static function newFactory()
+    {
+        return PostFactory::new();
+    }
+
+    public function scopePublished($query)
+    {
+        $query->where('status', 'published');
+    }
+
+    public function scopeDraft($query)
+    {
+        $query->where('status', 'draft');
+    }
 
     public function getTitleAttribute()
     {
@@ -34,6 +51,13 @@ class Post extends Model
             ->first(function ($value) {
                 return Str::of($value)->trim()->isNotEmpty();
             });
+    }
+
+    public function getMarkdownWithoutTitleAttribute()
+    {
+        return collect(explode(PHP_EOL, $this->markdown))
+            ->slice(1)
+            ->implode(PHP_EOL);
     }
 
     public function setSlugAttribute($value)
