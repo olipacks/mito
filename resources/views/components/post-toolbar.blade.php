@@ -9,7 +9,7 @@
                 </div>
             </div>
             <div>
-                <div class="flex space-x-3">
+                <div class="flex items-center space-x-3">
                     @if ($post->isPublished())
                         <form wire:submit.prevent="save">
                             <x-mito::button color="transparent" :disabled="! $post->isDirty('markdown')">

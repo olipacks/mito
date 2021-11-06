@@ -1414,6 +1414,9 @@ select {
 .max-w-sm {
 	max-width: 24rem;
 }
+.max-w-full {
+	max-width: 100%;
+}
 .flex-1 {
 	flex: 1 1 0%;
 }
@@ -1462,6 +1465,9 @@ select {
 }
 .resize-none {
 	resize: none;
+}
+.resize {
+	resize: both;
 }
 .flex-col {
 	flex-direction: column;
@@ -1523,6 +1529,9 @@ select {
 }
 .break-words {
 	overflow-wrap: break-word;
+}
+.break-all {
+	word-break: break-all;
 }
 .rounded-md {
 	border-radius: 0.375rem;
