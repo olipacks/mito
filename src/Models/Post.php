@@ -2,6 +2,7 @@
 
 namespace Mito\Models;
 
+use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -13,6 +14,10 @@ class Post extends Model
     public $table = 'mito_posts';
 
     protected $guarded = [];
+
+    protected $casts = [
+        'meta' => AsCollection::class,
+    ];
 
     public function getTitleAttribute()
     {
