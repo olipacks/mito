@@ -1691,11 +1691,11 @@ select {
 .pr-4 {
 	padding-right: 1rem;
 }
-.pb-6 {
-	padding-bottom: 1.5rem;
-}
 .pb-20 {
 	padding-bottom: 5rem;
+}
+.pb-6 {
+	padding-bottom: 1.5rem;
 }
 .text-left {
 	text-align: left;

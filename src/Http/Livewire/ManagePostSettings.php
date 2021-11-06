@@ -9,10 +9,12 @@ class ManagePostSettings extends ModalComponent
 {
     public int|Post $post;
 
+    public $slug;
+
     protected function rules()
     {
         return [
-            'post.custom_slug' => ['required', 'string', 'max:255', 'unique:mito_posts,slug,'.$this->post['id']],
+            'slug' => ['required', 'string', 'max:255', 'unique:mito_posts,slug,'.$this->post['id']],
         ];
     }
 
@@ -20,18 +22,19 @@ class ManagePostSettings extends ModalComponent
     {
         $this->validateOnly($propertyName);
 
-        if ($propertyName === 'post.custom_slug') {
-            $this->post->slug = $this->post->custom_slug;
+        if ($propertyName === 'slug') {
+            $this->post->slug = $this->slug;
         }
 
         $this->post->save();
 
-        $this->dispatchBrowserEvent('notify', 'Saved');
+        $this->emitSelf('notify-saved', $propertyName);
     }
 
     public function mount(Post $post)
     {
         $this->post = $post;
+        $this->slug = $post->slug;
     }
 
     public static function modalMaxWidth(): string

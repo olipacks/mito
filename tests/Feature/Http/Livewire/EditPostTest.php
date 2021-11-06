@@ -124,7 +124,6 @@ it('generates a slug on publish a draft with no custom slug', function () {
 
 it('does not generate a slug on publish a draft with custom slug', function () {
     $this->draft->fill([
-        'custom_slug' => 'custom-slug',
         'slug' => 'custom-slug',
     ])->save();
 
