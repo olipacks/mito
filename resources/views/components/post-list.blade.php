@@ -59,7 +59,7 @@
                     @unless ($post->isEmpty())
                         <div class="mt-1">
                             <p class="line-clamp-2 text-sm text-gray-600">
-                                {{ $post->lead }}
+                                {{ $post->excerpt }}
                             </p>
                         </div>
                     @endunless

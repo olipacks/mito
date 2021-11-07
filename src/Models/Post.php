@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
+use League\CommonMark\CommonMarkConverter;
+use League\CommonMark\MarkdownConverterInterface;
 use Mito\Database\Factories\PostFactory;
 
 class Post extends Model
@@ -44,13 +46,17 @@ class Post extends Model
             }), '# ');
     }
 
-    public function getLeadAttribute()
+    public function getExcerptAttribute()
     {
-        return collect(explode(PHP_EOL, $this->markdown))
+        $markdownExcerpt = collect(explode(PHP_EOL, $this->markdown))
             ->slice(1)
             ->first(function ($value) {
                 return Str::of($value)->trim()->isNotEmpty();
             });
+
+        return $markdownExcerpt ?
+            strip_tags($this->markdownConverter()->convertToHtml($markdownExcerpt)) :
+            null;
     }
 
     public function getMarkdownWithoutTitleAttribute()
@@ -108,6 +114,13 @@ class Post extends Model
     {
         $this->update([
             'status' => 'draft',
+        ]);
+    }
+
+    protected function markdownConverter(): MarkdownConverterInterface
+    {
+        return new CommonMarkConverter([
+            'html_input' => 'strip',
         ]);
     }
 }
