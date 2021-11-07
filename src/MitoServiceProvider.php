@@ -5,6 +5,7 @@ namespace Mito;
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
 use Mito\Components\Markdown;
+use Mito\Http\Livewire\DeletePost;
 use Mito\Http\Livewire\EditPost;
 use Mito\Http\Livewire\ManagePostSettings;
 use Mito\Http\Livewire\ShowPosts;
@@ -30,6 +31,7 @@ class MitoServiceProvider extends PackageServiceProvider
             Livewire::component('mito::posts.edit-post', EditPost::class);
             Livewire::component('mito::posts.show-posts', ShowPosts::class);
             Livewire::component('mito::posts.manage-post-settings', ManagePostSettings::class);
+            Livewire::component('mito::posts.delete-post', DeletePost::class);
         });
     }
 }
