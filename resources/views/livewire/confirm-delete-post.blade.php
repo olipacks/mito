@@ -6,7 +6,7 @@
     <x-slot name="content">
         <div class="mt-2">
             <p class="text-sm text-gray-500">
-                Are you sure you want to delete this post? You're about to delete "<span class="font-bold">{{ $post->title }}</span>". This action cannot be undone.
+                Are you sure you want to delete this post? This action cannot be undone.
             </p>
         </div>
         <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
