@@ -2,6 +2,10 @@
 
 All notable changes to `mito` will be documented in this file.
 
+## 0.4.0 - 2021-11-07
+
+* Delete posts by @oliverds in https://github.com/mitophp/mito/pull/4
+
 ## 0.3.0 - 2021-11-05
 
 * UI improvements by @oliverds in https://github.com/mitophp/mito/pull/2
