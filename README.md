@@ -1,5 +1,3 @@
-THIS PACKAGE IS IN DEVELOPMENT, PLEASE DO NOT USE IN PRODUCTION YET
-
 # A minimal Laravel package for blog publishing
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/mitophp/mito.svg?style=flat-square)](https://packagist.org/packages/mitophp/mito)
@@ -8,6 +6,8 @@ THIS PACKAGE IS IN DEVELOPMENT, PLEASE DO NOT USE IN PRODUCTION YET
 [![Total Downloads](https://img.shields.io/packagist/dt/mitophp/mito.svg?style=flat-square)](https://packagist.org/packages/mitophp/mito)
 
 Mito is a blog publishing platform with a minimal UI to manage a markdown blog publication into a new or existent Laravel project.
+
+Mito does not provide its own blog front-end interface, but you may use the `Mito\Models\Post` model to get or display your content in controllers or views.
 
 https://user-images.githubusercontent.com/7003648/138785945-59cb4c6d-e401-4097-98d2-6fb50c34565b.mp4
 
