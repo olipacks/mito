@@ -11,6 +11,10 @@ Mito does not provide its own blog front-end interface, but you may use the `Mit
 
 https://user-images.githubusercontent.com/7003648/138785945-59cb4c6d-e401-4097-98d2-6fb50c34565b.mp4
 
+## Demo
+
+You can test and try Mito dashboard on [our demo site](https://demo.mitophp.com).
+
 ## Installation
 
 You may use Composer to install Mito into your new or existent Laravel project:
