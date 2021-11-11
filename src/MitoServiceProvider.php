@@ -9,8 +9,8 @@ use Mito\Components\Markdown;
 use Mito\Http\Livewire\DeletePost;
 use Mito\Http\Livewire\EditPost;
 use Mito\Http\Livewire\ManagePostSettings;
-use Mito\Http\Livewire\UpdatePostStatusModal;
 use Mito\Http\Livewire\ShowPosts;
+use Mito\Http\Livewire\UpdatePostStatusModal;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
