@@ -15,7 +15,7 @@
             @foreach ($links as list($title, $link, $active))
                 <a
                     href="{{ $link }}"
-                    class="{{ $active ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }} px-2.5 py-1.5 rounded-md text-sm font-medium"
+                    class="{{ $active ? 'bg-gray-800 text-white' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800' }} px-2.5 py-1.5 rounded-md text-sm font-medium"
                 >
                     {{ $title }}
                 </a>
