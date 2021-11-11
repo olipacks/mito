@@ -26,6 +26,7 @@
                                     </div>
                                 @elseif ($post->isScheduled())
                                     <div class="flex items-center">
+                                        <x-mito::icon.scheduled class="mr-2.5 h-4 w-4" />
                                         Scheduled
                                     </div>
                                 @else
@@ -53,7 +54,7 @@
                                 </x-mito::dropdown.link>
                                 <x-mito::dropdown.link wire:click.prevent="$emit('openModal', 'mito::posts.schedule-post-modal', {{ json_encode(['post' => $post->id]) }})" href="/" :active="$post->isScheduled()">
                                     <div class="flex items-center">
-                                        <x-mito::icon.draft class="mr-2.5 h-4 w-4" />
+                                        <x-mito::icon.scheduled class="mr-2.5 h-4 w-4" />
                                         Scheduled
                                     </div>
                                 </x-mito::dropdown.link>

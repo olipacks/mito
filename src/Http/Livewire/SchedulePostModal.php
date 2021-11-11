@@ -10,27 +10,24 @@ use Mito\Models\Post;
 class SchedulePostModal extends ModalComponent
 {
     public int|Post $post;
-    public $publishDate = null;
-    public $day = null;
-    public $month = null;
-    public $year = null;
-    public $hour = null;
-    public $minute = null;
+    public $publishDateTime = null;
+    public $date = null;
+    public $time = null;
 
     protected $messages = [
-        'publishDate.date_format' => 'The publish date does not match the format DD-MM-YYYY HH:MM.',
+        'publishDateTime.date_format' => 'The publish date and time do not match the format DD-MM-YYYY HH:MM.',
     ];
 
     protected function rules()
     {
         return [
-            'publishDate' => ['required', 'date_format:Y-m-d H:i'],
+            'publishDateTime' => ['required', 'date_format:Y-m-d H:i'],
         ];
     }
 
     public function schedule()
     {
-        $this->publishDate = "{$this->year}-{$this->month}-{$this->day} {$this->hour}:{$this->minute}";
+        $this->publishDateTime = "{$this->date} {$this->time}";
 
         $this->validate();
 
@@ -40,9 +37,11 @@ class SchedulePostModal extends ModalComponent
             ])->save();
         }
 
-        $this->post->markAsScheduled(Carbon::parse($this->publishDate));
+        $this->post->markAsScheduled(Carbon::parse($this->publishDateTime));
 
-        $this->type = 'scheduled';
+        $this->forceClose()->closeModal();
+
+        $this->emit('typeUpdated', 'scheduled');
 
         $this->dispatchBrowserEvent('notify', 'Scheduled!');
     }
@@ -50,7 +49,8 @@ class SchedulePostModal extends ModalComponent
     public function mount(Post $post)
     {
         $this->post = $post;
-        $this->published_at = now();
+        $this->date = now()->format('Y-m-d');
+        $this->time = now()->addMinutes(5)->format('H:i');
     }
 
     public static function modalMaxWidth(): string

@@ -18,5 +18,5 @@ it('redirects to show posts after deletion', function () {
     $response = $this->livewire(DeletePost::class, ['post' => $post])
         ->call('delete');
 
-    $response->assertRedirect(route('mito.posts.index'));
+    $response->assertRedirect(route('mito.posts.index', ['type' => $post->status]));
 });

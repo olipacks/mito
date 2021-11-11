@@ -16,6 +16,10 @@ switch ($color) {
         $colorClasses = 'border-transparent text-white bg-red-600 hover:bg-red-500 focus:border-red-700 focus:shadow-outline-red active:bg-red-700';
         $shadow = true;
         break;
+    case 'green':
+        $colorClasses = 'border-transparent text-white bg-green-600 hover:bg-green-500 focus:border-green-700 focus:shadow-outline-red active:bg-green-700';
+        $shadow = true;
+        break;
     case 'primary':
     default:
         $colorClasses = 'border-transparent text-white bg-purple-600 hover:bg-purple-500 focus:border-purple-700 focus:shadow-outline-purple active:bg-purple-700';

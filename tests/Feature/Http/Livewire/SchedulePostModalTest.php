@@ -9,11 +9,8 @@ beforeEach(function () {
 
 it('can schedule post', function () {
     $this->livewire(SchedulePostModal::class, ['post' => $this->draft])
-        ->set('year', '2030')
-        ->set('month', '12')
-        ->set('day', '11')
-        ->set('hour', '10')
-        ->set('minute', '09')
+        ->set('date', '2030-12-11')
+        ->set('time', '10:09')
         ->call('schedule');
 
     expect($this->draft->fresh()->isScheduled())->toBeTrue();

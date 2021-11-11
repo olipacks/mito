@@ -15,6 +15,10 @@ class EditPost extends Component
     public $type;
     public $image;
 
+    protected $listeners = [
+        'typeUpdated',
+    ];
+
     protected $rules = [
         'post.markdown' => 'nullable|sometimes',
     ];
@@ -83,6 +87,11 @@ class EditPost extends Component
         $this->type = 'draft';
 
         $this->dispatchBrowserEvent('notify', 'Unpublished!');
+    }
+
+    public function typeUpdated($type)
+    {
+        $this->type = $type;
     }
 
     public function render()
