@@ -39,6 +39,11 @@ class Post extends Model
         $query->where('status', 'draft');
     }
 
+    public function scopeScheduled($query)
+    {
+        $query->where('status', 'scheduled');
+    }
+
     public function getTitleAttribute()
     {
         return Str::after(collect(explode(PHP_EOL, $this->markdown))
