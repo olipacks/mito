@@ -124,6 +124,7 @@ class Post extends Model
     public function markAsDraft()
     {
         $this->update([
+            'published_at' => $this->isScheduled() ? null : $this->published_at,
             'status' => 'draft',
         ]);
     }

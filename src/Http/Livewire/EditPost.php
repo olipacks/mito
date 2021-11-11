@@ -65,30 +65,6 @@ class EditPost extends Component
         $this->dispatchBrowserEvent('notify', 'Saved!');
     }
 
-    public function publish()
-    {
-        if (is_null($this->post->slug)) {
-            $this->post->fill([
-                'slug' => Str::slug($this->post->title),
-            ])->save();
-        }
-
-        $this->post->markAsPublished();
-
-        $this->type = 'published';
-
-        $this->dispatchBrowserEvent('notify', 'Published!');
-    }
-
-    public function unpublish()
-    {
-        $this->post->markAsDraft();
-
-        $this->type = 'draft';
-
-        $this->dispatchBrowserEvent('notify', 'Unpublished!');
-    }
-
     public function typeUpdated($type)
     {
         $this->type = $type;

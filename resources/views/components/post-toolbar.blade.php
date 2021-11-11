@@ -17,50 +17,25 @@
                             </x-mito::button>
                         </form>
                     @endif
-                    <x-mito::dropdown>
-                        <x-slot name="trigger">
-                            <x-mito::button color="transparent">
-                                @if ($post->isDraft())
-                                    <div class="flex items-center">
-                                        Unpublished
-                                    </div>
-                                @elseif ($post->isScheduled())
-                                    <div class="flex items-center">
-                                        <x-mito::icon.scheduled class="mr-2.5 h-4 w-4" />
-                                        Scheduled
-                                    </div>
-                                @else
-                                    <div class="flex items-center">
-                                        <x-mito::icon.published class="mr-2.5 h-4 w-4" />
-                                        Published
-                                    </div>
-                                @endif
-                            </x-mito::button>
-                        </x-slot>
 
-                        <x-slot name="content">
-                            <div class="space-y-1">
-                                <x-mito::dropdown.link wire:click.prevent="unpublish" href="/" :active="$post->isDraft()">
-                                    <div class="flex items-center">
-                                        <x-mito::icon.draft class="mr-2.5 h-4 w-4" />
-                                        Unpublished
-                                    </div>
-                                </x-mito::dropdown.link>
-                                <x-mito::dropdown.link wire:click.prevent="publish" href="/" :active="$post->isPublished()">
-                                    <div class="flex items-center">
-                                        <x-mito::icon.published class="mr-2.5 h-4 w-4" />
-                                        Published
-                                    </div>
-                                </x-mito::dropdown.link>
-                                <x-mito::dropdown.link wire:click.prevent="$emit('openModal', 'mito::posts.schedule-post-modal', {{ json_encode(['post' => $post->id]) }})" href="/" :active="$post->isScheduled()">
-                                    <div class="flex items-center">
-                                        <x-mito::icon.scheduled class="mr-2.5 h-4 w-4" />
-                                        Scheduled
-                                    </div>
-                                </x-mito::dropdown.link>
+                    <x-mito::button color="transparent" wire:click="$emit('openModal', 'mito::posts.update-post-status-modal', {{ json_encode(['post' => $post->id]) }})">
+                        @if ($post->isDraft())
+                            <div class="flex items-center">
+                                Unpublished
                             </div>
-                        </x-slot>
-                    </x-mito::dropdown>
+                        @elseif ($post->isScheduled())
+                            <div class="flex items-center">
+                                <x-mito::icon.scheduled class="mr-2.5 h-4 w-4" />
+                                Scheduled
+                            </div>
+                        @else
+                            <div class="flex items-center">
+                                <x-mito::icon.published class="mr-2.5 h-4 w-4" />
+                                Published
+                            </div>
+                        @endif
+                    </x-mito::button>
+
                     <x-mito::button.icon color="transparent" wire:click="$emit('openModal', 'mito::posts.manage-post-settings', {{ json_encode(['post' => $post->id]) }})">
                         <x-mito::icon.settings class="h-4 w-4" />
                     </x-mito::button.icon>

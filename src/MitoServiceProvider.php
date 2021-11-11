@@ -35,7 +35,7 @@ class MitoServiceProvider extends PackageServiceProvider
             Livewire::component('mito::posts.show-posts', ShowPosts::class);
             Livewire::component('mito::posts.manage-post-settings', ManagePostSettings::class);
             Livewire::component('mito::posts.delete-post', DeletePost::class);
-            Livewire::component('mito::posts.schedule-post-modal', UpdatePostStatusModal::class);
+            Livewire::component('mito::posts.update-post-status-modal', UpdatePostStatusModal::class);
         });
     }
 }
