@@ -29,6 +29,14 @@ class PostFactory extends Factory
         ]);
     }
 
+    public function scheduled()
+    {
+        return $this->state([
+            'status' =>  'scheduled',
+            'published_at' => $this->faker->dateTimeBetween('now', '+1 month'),
+        ]);
+    }
+
     public function draft()
     {
         return $this->state([

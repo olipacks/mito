@@ -4,6 +4,7 @@ namespace Mito;
 
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
+use Mito\Commands\PublishScheduledPostsCommand;
 use Mito\Components\Markdown;
 use Mito\Http\Livewire\DeletePost;
 use Mito\Http\Livewire\EditPost;
@@ -23,7 +24,8 @@ class MitoServiceProvider extends PackageServiceProvider
             ->hasViewComponent('mito', Markdown::class)
             ->hasAssets()
             ->hasRoute('web')
-            ->hasMigration('create_mito_posts_table');
+            ->hasMigration('create_mito_posts_table')
+            ->hasCommand(PublishScheduledPostsCommand::class);
     }
 
     public function packageRegistered()
