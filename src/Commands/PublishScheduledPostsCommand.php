@@ -12,7 +12,7 @@ class PublishScheduledPostsCommand extends Command
     public function handle()
     {
         Post::scheduled()
-            ->whereDate('published_at', '<=', now())
+            ->where('published_at', '<=', now())
             ->get()
             ->each(function (Post $post) {
                 $this->comment("Publishing post `{$post->title}`");
