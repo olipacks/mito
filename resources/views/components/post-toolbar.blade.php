@@ -24,6 +24,10 @@
                                     <div class="flex items-center">
                                         Unpublished
                                     </div>
+                                @elseif ($post->isScheduled())
+                                    <div class="flex items-center">
+                                        Scheduled
+                                    </div>
                                 @else
                                     <div class="flex items-center">
                                         <x-mito::icon.published class="mr-2.5 h-4 w-4" />
@@ -45,6 +49,12 @@
                                     <div class="flex items-center">
                                         <x-mito::icon.published class="mr-2.5 h-4 w-4" />
                                         Published
+                                    </div>
+                                </x-mito::dropdown.link>
+                                <x-mito::dropdown.link wire:click.prevent="$emit('openModal', 'mito::posts.schedule-post-modal', {{ json_encode(['post' => $post->id]) }})" href="/" :active="$post->isScheduled()">
+                                    <div class="flex items-center">
+                                        <x-mito::icon.draft class="mr-2.5 h-4 w-4" />
+                                        Scheduled
                                     </div>
                                 </x-mito::dropdown.link>
                             </div>
