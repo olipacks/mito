@@ -2,8 +2,8 @@
 
 use Mito\Commands\PublishScheduledPostsCommand;
 use Mito\Models\Post;
-use Symfony\Component\Console\Command\Command;
 use function Pest\Laravel\artisan;
+use Symfony\Component\Console\Command\Command;
 
 it('can publish a scheduled post', function () {
     $scheduledPost = Post::factory()->scheduled()->state([
