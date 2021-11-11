@@ -21,9 +21,7 @@ it('can schedule post', function () {
 });
 
 it('validates a required date', function () {
-
 });
 
 it('validates date', function () {
-
 });
