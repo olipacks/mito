@@ -4,17 +4,18 @@
     'currentPost' => null,
     'links' => [
         ['Drafts', route('mito.posts.index') . '?type=draft', $currentType === 'draft'],
+        ['Scheduled', route('mito.posts.index') . '?type=scheduled', $currentType === 'scheduled'],
         ['Published', route('mito.posts.index') . '?type=published', $currentType === 'published'],
     ],
 ])
 
 <div class="flex-shrink-0">
     <div class="h-14 bg-white px-3 flex flex-col justify-center">
-        <div class="flex space-x-4">
+        <div class="flex justify-between">
             @foreach ($links as list($title, $link, $active))
                 <a
                     href="{{ $link }}"
-                    class="{{ $active ? 'bg-gray-900 text-white' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900' }} px-3.5 py-1.5 rounded-md text-sm font-medium"
+                    class="{{ $active ? 'bg-gray-800 text-white' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-800' }} px-2.5 py-1.5 rounded-md text-sm font-medium"
                 >
                     {{ $title }}
                 </a>
@@ -50,10 +51,10 @@
                                 @endif
                             </a>
                         </div>
-                        @if ($post->isPublished())
-                            <time datetime="{{ $post->published_at->format('Y-m-d') }}" class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">{{ $post->published_at->diffForHumans(null, null, true) }}</time>
-                        @else
+                        @if ($post->isDraft())
                             <time datetime="{{ $post->created_at->format('Y-m-d') }}" class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">{{ $post->created_at->diffForHumans(null, null, true) }}</time>
+                        @else
+                            <time datetime="{{ $post->published_at->format('Y-m-d') }}" class="flex-shrink-0 whitespace-nowrap text-sm text-gray-500">{{ $post->published_at->diffForHumans(null, null, true) }}</time>
                         @endif
                     </div>
                     @unless ($post->isEmpty())

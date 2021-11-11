@@ -10,5 +10,5 @@
         </span>
     @endif
 
-    <input {{ $disabled ? 'disabled' : '' }} {{ $attributes->merge(['class' => 'flex-1 focus:ring-purple-500 focus:border-purple-500 text-sm py-1.5 border-gray-300 rounded' . ($leadingAddOn ? ' rounded-l-none' : '')]) }}">
+    <input {{ $disabled ? 'disabled' : '' }} {{ $attributes->merge(['class' => 'flex-1 focus:ring-gray-500 focus:border-gray-500 text-sm py-1.5 border-gray-300 rounded' . ($leadingAddOn ? ' rounded-l-none' : '')]) }}">
 </div>

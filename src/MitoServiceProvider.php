@@ -4,11 +4,13 @@ namespace Mito;
 
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\Livewire;
+use Mito\Commands\PublishScheduledPostsCommand;
 use Mito\Components\Markdown;
 use Mito\Http\Livewire\DeletePost;
 use Mito\Http\Livewire\EditPost;
 use Mito\Http\Livewire\ManagePostSettings;
 use Mito\Http\Livewire\ShowPosts;
+use Mito\Http\Livewire\UpdatePostStatusModal;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -22,7 +24,8 @@ class MitoServiceProvider extends PackageServiceProvider
             ->hasViewComponent('mito', Markdown::class)
             ->hasAssets()
             ->hasRoute('web')
-            ->hasMigration('create_mito_posts_table');
+            ->hasMigration('create_mito_posts_table')
+            ->hasCommand(PublishScheduledPostsCommand::class);
     }
 
     public function packageRegistered()
@@ -32,6 +35,7 @@ class MitoServiceProvider extends PackageServiceProvider
             Livewire::component('mito::posts.show-posts', ShowPosts::class);
             Livewire::component('mito::posts.manage-post-settings', ManagePostSettings::class);
             Livewire::component('mito::posts.delete-post', DeletePost::class);
+            Livewire::component('mito::posts.update-post-status-modal', UpdatePostStatusModal::class);
         });
     }
 }

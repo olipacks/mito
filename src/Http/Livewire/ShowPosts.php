@@ -16,7 +16,7 @@ class ShowPosts extends Component
     public function render()
     {
         return view('mito::livewire.show-posts', [
-            'posts' => Post::where('status', $this->type)->latest($this->type === 'published' ? 'published_at' : 'created_at')->get(),
+            'posts' => Post::where('status', $this->type)->latest($this->type === 'draft' ? 'created_at' : 'published_at')->get(),
         ])->layout('mito::layouts.html');
     }
 }

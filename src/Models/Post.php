@@ -2,6 +2,7 @@
 
 namespace Mito\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -36,6 +37,11 @@ class Post extends Model
     public function scopeDraft($query)
     {
         $query->where('status', 'draft');
+    }
+
+    public function scopeScheduled($query)
+    {
+        $query->where('status', 'scheduled');
     }
 
     public function getTitleAttribute()
@@ -102,6 +108,11 @@ class Post extends Model
         return $this->status === 'draft';
     }
 
+    public function isScheduled(): bool
+    {
+        return $this->status === 'scheduled';
+    }
+
     public function markAsPublished()
     {
         $this->update([
@@ -113,7 +124,16 @@ class Post extends Model
     public function markAsDraft()
     {
         $this->update([
+            'published_at' => $this->isScheduled() ? null : $this->published_at,
             'status' => 'draft',
+        ]);
+    }
+
+    public function markAsScheduled(Carbon $publishDate)
+    {
+        $this->update([
+            'published_at' => $publishDate,
+            'status' => 'scheduled',
         ]);
     }
 
