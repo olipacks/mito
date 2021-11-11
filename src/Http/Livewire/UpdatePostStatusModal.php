@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 use LivewireUI\Modal\ModalComponent;
 use Mito\Models\Post;
 
-class SchedulePostModal extends ModalComponent
+class UpdatePostStatusModal extends ModalComponent
 {
     public int|Post $post;
     public $publishDateTime = null;

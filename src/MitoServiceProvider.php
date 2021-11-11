@@ -9,7 +9,7 @@ use Mito\Components\Markdown;
 use Mito\Http\Livewire\DeletePost;
 use Mito\Http\Livewire\EditPost;
 use Mito\Http\Livewire\ManagePostSettings;
-use Mito\Http\Livewire\SchedulePostModal;
+use Mito\Http\Livewire\UpdatePostStatusModal;
 use Mito\Http\Livewire\ShowPosts;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -35,7 +35,7 @@ class MitoServiceProvider extends PackageServiceProvider
             Livewire::component('mito::posts.show-posts', ShowPosts::class);
             Livewire::component('mito::posts.manage-post-settings', ManagePostSettings::class);
             Livewire::component('mito::posts.delete-post', DeletePost::class);
-            Livewire::component('mito::posts.schedule-post-modal', SchedulePostModal::class);
+            Livewire::component('mito::posts.schedule-post-modal', UpdatePostStatusModal::class);
         });
     }
 }
