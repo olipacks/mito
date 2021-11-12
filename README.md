@@ -9,6 +9,8 @@ Mito is a blog publishing platform with a minimal UI to manage a markdown blog p
 
 Mito does not provide its own blog front-end interface, but you may use the `Mito\Models\Post` model to get or display your content in controllers or views.
 
+You may also review or use the [Personal Blog](https://github.com/mitophp/starter-kit-personal-blog) starter kit as a starting point for a Laravel blog integrated with Mito.
+
 https://user-images.githubusercontent.com/7003648/138785945-59cb4c6d-e401-4097-98d2-6fb50c34565b.mp4
 
 ## Demo
