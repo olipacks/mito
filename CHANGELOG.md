@@ -2,6 +2,10 @@
 
 All notable changes to `mito` will be documented in this file.
 
+## 0.5.0 - 2021-11-12
+
+* Schedule posts by @oliverds in https://github.com/mitophp/mito/pull/5
+
 ## 0.4.0 - 2021-11-07
 
 * Delete posts by @oliverds in https://github.com/mitophp/mito/pull/4
