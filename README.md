@@ -42,6 +42,19 @@ php artisan migrate
 
 After performing all these steps, you should be able to visit the Mito Dashboard at `/mito`.
 
+### Schedule the command
+
+In the console kernel, you should schedule the `mito:publish-scheduled-posts` command.
+
+```php
+// in app/Console/Kernel.php
+protected function schedule(Schedule $schedule)
+{
+    // ...
+    $schedule->command('mito:publish-scheduled-posts')->everyMinute();
+}
+```
+
 ## Updates
 
 After each update, make sure you run these commands:
