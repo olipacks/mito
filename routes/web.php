@@ -11,4 +11,6 @@ Route::prefix('mito')
         Route::redirect('/', '/mito/posts');
         Route::get('/posts', ShowPosts::class)->name('mito.posts.index');
         Route::get('/posts/{post}/edit', EditPost::class)->name('mito.posts.edit');
+
+        Route::view('/toolbar', 'mito::toolbar');
     });
