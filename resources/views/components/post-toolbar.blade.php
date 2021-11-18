@@ -2,8 +2,8 @@
     <div class="h-14 px-3 flex flex-col justify-center">
         <div class="flex justify-between">
             <div>
-                <div class="block xl:hidden flex space-x-3">
-                    <x-mito::button.icon color="transparent" href="{{ route('mito.posts.index') . '?type=' . $post->status }}" color="transparent" :disabled="! $post->isDirty('markdown')">
+                <div class="block xl:hidden space-x-3">
+                    <x-mito::button.icon color="transparent" href="{{ route('mito.posts.index') . '?type=' . $post->status }}">
                         <x-mito::icon.back class="h-4 w-4" />
                     </x-mito::button.icon>
                 </div>
