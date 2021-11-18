@@ -2,6 +2,8 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+@import 'tippy.js/dist/tippy.css';
+
 @font-face {
     font-family: Writer;
     src: url('/vendor/mito/font/Writer-Regular.ttf');
