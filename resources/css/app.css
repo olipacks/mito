@@ -13,3 +13,7 @@
 [x-cloak] {
     display: none !important;
 }
+
+.tippy-box {
+    font-size: 12px;
+}
