@@ -1,5 +1,4 @@
 {
     "/resources/dist/js/app.js": "/resources/dist/js/app.js",
-    "/resources/dist/css/app.css": "/resources/dist/css/app.css",
-    "/mito-app/public/vendor/mito/.DS_Store": "/mito-app/public/vendor/mito/.DS_Store"
+    "/resources/dist/css/app.css": "/resources/dist/css/app.css"
 }

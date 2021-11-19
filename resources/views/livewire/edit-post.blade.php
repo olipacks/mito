@@ -1,5 +1,5 @@
 <x-mito::post-layout>
-    <x-slot name="centerColumn">
+    <x-slot name="centerColumn" x-data="">
         <x-mito::post-toolbar :post="$post" />
 
         <x-mito::post-editor wire:model="post.markdown" :post="$post" />
