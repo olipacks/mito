@@ -1,7 +1,13 @@
+@props([
+    'centerColumn',
+    'rightColumn',
+    'leftColumn',
+])
+
 <div class="relative h-screen overflow-hidden bg-gray-100 flex flex-col">
     <div class="min-h-0 flex-1 flex overflow-hidden">
         <main class="min-w-0 flex-1 xl:flex">
-            <section class="min-w-0 flex-1 h-full flex flex-col overflow-hidden xl:order-last">
+            <section {{ $centerColumn->attributes->class(['min-w-0 flex-1 h-full flex flex-col overflow-hidden xl:order-last']) }}>
                 {{ $centerColumn }}
             </section>
 
