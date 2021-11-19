@@ -2,6 +2,10 @@
 
 All notable changes to `mito` will be documented in this file.
 
+## 0.6.0 - 2021-11-19
+
+* Markdown toolbar by @oliverds in https://github.com/mitophp/mito/pull/6
+
 ## 0.5.0 - 2021-11-12
 
 * Schedule posts by @oliverds in https://github.com/mitophp/mito/pull/5
