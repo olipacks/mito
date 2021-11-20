@@ -1,0 +1,16 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+    level: max
+    paths:
+        - src
+        - database
+
+    ignoreErrors:
+        - '#Call to an undefined method [a-zA-Z0-9\\_]+::layout\(\)#'
+
+    checkMissingIterableValueType: false
+
+    databaseMigrationsPath:
+        - database/migrations

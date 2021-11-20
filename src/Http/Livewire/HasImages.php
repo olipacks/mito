@@ -25,6 +25,14 @@ trait HasImages
 
     protected function imagesDisk(): string
     {
-        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('mito.images_disk', 'public');
+        if (isset($_ENV['VAPOR_ARTIFACT_NAME'])) {
+            return 's3';
+        }
+
+        if (is_string($disk = config('mito.images_disk', 'public'))) {
+            return $disk;
+        }
+
+        return 'public';
     }
 }
