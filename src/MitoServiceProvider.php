@@ -3,7 +3,6 @@
 namespace Mito;
 
 use Illuminate\View\Compilers\BladeCompiler;
-use Livewire\Livewire;
 use Livewire\LivewireManager;
 use Mito\Commands\PublishScheduledPostsCommand;
 use Mito\Components\Markdown;
