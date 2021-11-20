@@ -3,7 +3,9 @@
 namespace Mito\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\AsCollection;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -24,37 +26,39 @@ class Post extends Model
         'meta' => AsCollection::class,
     ];
 
-    protected static function newFactory()
+    protected static function newFactory(): Factory
     {
         return PostFactory::new();
     }
 
-    public function scopePublished($query)
+    public function scopePublished(Builder $query): void
     {
         $query->where('status', 'published');
     }
 
-    public function scopeDraft($query)
+    public function scopeDraft(Builder $query): void
     {
         $query->where('status', 'draft');
     }
 
-    public function scopeScheduled($query)
+    public function scopeScheduled(Builder $query): void
     {
         $query->where('status', 'scheduled');
     }
 
-    public function getTitleAttribute()
+    public function getTitleAttribute(): string
     {
-        return Str::after(collect(explode(PHP_EOL, $this->markdown))
+        $firstNotEmptyLine = collect(explode(PHP_EOL, $this->markdown ?? ''))
             ->first(function ($value) {
                 return Str::of($value)->trim()->isNotEmpty();
-            }), '# ');
+            });
+
+        return Str::after($firstNotEmptyLine ?? '', '# ');
     }
 
-    public function getExcerptAttribute()
+    public function getExcerptAttribute(): string|null
     {
-        $markdownExcerpt = collect(explode(PHP_EOL, $this->markdown))
+        $markdownExcerpt = collect(explode(PHP_EOL, $this->markdown ?? ''))
             ->slice(1)
             ->first(function ($value) {
                 return Str::of($value)->trim()->isNotEmpty();
@@ -65,14 +69,14 @@ class Post extends Model
             null;
     }
 
-    public function getMarkdownWithoutTitleAttribute()
+    public function getMarkdownWithoutTitleAttribute(): string
     {
-        return collect(explode(PHP_EOL, $this->markdown))
+        return collect(explode(PHP_EOL, $this->markdown ?? ''))
             ->slice(1)
             ->implode(PHP_EOL);
     }
 
-    public function setSlugAttribute($value)
+    public function setSlugAttribute(string $value): void
     {
         if (static::whereSlug($slug = Str::slug($value))->exists()) {
             $slug = $this->incrementSlug($slug);
@@ -81,7 +85,7 @@ class Post extends Model
         $this->attributes['slug'] = $slug;
     }
 
-    public function incrementSlug($slug)
+    public function incrementSlug(string $slug): string
     {
         $original = $slug;
         $count = 2;
@@ -93,9 +97,9 @@ class Post extends Model
         return $slug;
     }
 
-    public function isEmpty()
+    public function isEmpty(): bool
     {
-        return Str::of($this->markdown)->trim()->isEmpty();
+        return Str::of($this->markdown ?? '')->trim()->isEmpty();
     }
 
     public function isPublished(): bool
@@ -113,7 +117,7 @@ class Post extends Model
         return $this->status === 'scheduled';
     }
 
-    public function markAsPublished()
+    public function markAsPublished(): void
     {
         $this->update([
             'published_at' => $this->published_at ?? $this->freshTimestamp(),
@@ -121,7 +125,7 @@ class Post extends Model
         ]);
     }
 
-    public function markAsDraft()
+    public function markAsDraft(): void
     {
         $this->update([
             'published_at' => $this->isScheduled() ? null : $this->published_at,
@@ -129,7 +133,7 @@ class Post extends Model
         ]);
     }
 
-    public function markAsScheduled(Carbon $publishDate)
+    public function markAsScheduled(Carbon $publishDate): void
     {
         $this->update([
             'published_at' => $publishDate,

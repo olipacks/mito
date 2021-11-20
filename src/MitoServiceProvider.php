@@ -3,7 +3,7 @@
 namespace Mito;
 
 use Illuminate\View\Compilers\BladeCompiler;
-use Livewire\Livewire;
+use Livewire\LivewireManager;
 use Mito\Commands\PublishScheduledPostsCommand;
 use Mito\Components\Markdown;
 use Mito\Http\Livewire\DeletePost;
@@ -28,14 +28,19 @@ class MitoServiceProvider extends PackageServiceProvider
             ->hasCommand(PublishScheduledPostsCommand::class);
     }
 
-    public function packageRegistered()
+    public function packageRegistered(): void
     {
         $this->app->afterResolving(BladeCompiler::class, function () {
-            Livewire::component('mito::posts.edit-post', EditPost::class);
-            Livewire::component('mito::posts.show-posts', ShowPosts::class);
-            Livewire::component('mito::posts.manage-post-settings', ManagePostSettings::class);
-            Livewire::component('mito::posts.delete-post', DeletePost::class);
-            Livewire::component('mito::posts.update-post-status-modal', UpdatePostStatusModal::class);
+            $this->registerLivewireComponents();
         });
+    }
+
+    protected function registerLivewireComponents(): void
+    {
+        app(LivewireManager::class)->component('mito::posts.edit-post', EditPost::class);
+        app(LivewireManager::class)->component('mito::posts.show-post', ShowPosts::class);
+        app(LivewireManager::class)->component('mito::posts.manage-post-settings', ManagePostSettings::class);
+        app(LivewireManager::class)->component('mito::posts.delete-post', DeletePost::class);
+        app(LivewireManager::class)->component('mito::posts.update-post-status-modal', UpdatePostStatusModal::class);
     }
 }

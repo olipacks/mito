@@ -4,29 +4,30 @@ namespace Mito\Http\Livewire;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
 use Mito\Models\Post;
 
 class UpdatePostStatusModal extends ModalComponent
 {
     public int|Post $post;
-    public $publishDateTime;
-    public $status;
-    public $date;
-    public $time;
+    public string $publishDateTime;
+    public string $status;
+    public string $date;
+    public string $time;
 
-    protected $messages = [
+    protected array $messages = [
         'publishDateTime.date_format' => 'The publish date and time do not match the format DD-MM-YYYY HH:MM.',
     ];
 
-    protected function rules()
+    protected function rules(): array
     {
         return [
             'publishDateTime' => ['required', 'date_format:Y-m-d H:i'],
         ];
     }
 
-    public function update()
+    public function update(): void
     {
         match ($this->status) {
             'published' => $this->publish(),
@@ -36,8 +37,12 @@ class UpdatePostStatusModal extends ModalComponent
         };
     }
 
-    protected function publish()
+    protected function publish(): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         if (is_null($this->post->slug)) {
             $this->post->fill([
                 'slug' => Str::slug($this->post->title),
@@ -53,8 +58,12 @@ class UpdatePostStatusModal extends ModalComponent
         $this->dispatchBrowserEvent('notify', 'Published!');
     }
 
-    protected function unpublish()
+    protected function unpublish(): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->post->markAsDraft();
 
         $this->forceClose()->closeModal();
@@ -64,8 +73,12 @@ class UpdatePostStatusModal extends ModalComponent
         $this->dispatchBrowserEvent('notify', 'Unpublished!');
     }
 
-    protected function schedule()
+    protected function schedule(): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->publishDateTime = "{$this->date} {$this->time}";
 
         $this->validate();
@@ -85,7 +98,7 @@ class UpdatePostStatusModal extends ModalComponent
         $this->dispatchBrowserEvent('notify', 'Scheduled!');
     }
 
-    public function mount(Post $post)
+    public function mount(Post $post): void
     {
         $this->post = $post;
         $this->status = $post->status;
@@ -98,7 +111,7 @@ class UpdatePostStatusModal extends ModalComponent
         return 'md';
     }
 
-    public function render()
+    public function render(): View
     {
         return view('mito::livewire.schedule-post-modal');
     }

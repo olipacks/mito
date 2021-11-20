@@ -6,6 +6,9 @@ use Mito\Models\Post;
 
 trait WithDraftCreation
 {
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function createDraft()
     {
         $draft = Post::create();

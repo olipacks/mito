@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Gate;
 
 class EnsureUserIsAuthorized
 {
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param Closure $next
+     * @return void|Closure
+     */
     public function handle($request, Closure $next)
     {
         $allowed = app()->environment('local')

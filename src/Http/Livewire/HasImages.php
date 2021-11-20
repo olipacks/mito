@@ -10,7 +10,7 @@ trait HasImages
 {
     use WithFileUploads;
 
-    public function storeImage(UploadedFile $image)
+    public function storeImage(UploadedFile $image): string|false
     {
         return $image->storePublicly(
             'images',
@@ -18,13 +18,21 @@ trait HasImages
         );
     }
 
-    public function getImageUrl(string $imagePath)
+    public function getImageUrl(string $imagePath): string
     {
         return Storage::disk($this->imagesDisk())->url($imagePath);
     }
 
-    protected function imagesDisk()
+    protected function imagesDisk(): string
     {
-        return isset($_ENV['VAPOR_ARTIFACT_NAME']) ? 's3' : config('mito.images_disk', 'public');
+        if (isset($_ENV['VAPOR_ARTIFACT_NAME'])) {
+            return 's3';
+        }
+
+        if (is_string($disk = config('mito.images_disk', 'public'))) {
+            return $disk;
+        }
+
+        return 'public';
     }
 }

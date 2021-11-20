@@ -2,6 +2,7 @@
 
 namespace Mito\Http\Livewire;
 
+use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
 use Mito\Models\Post;
 
@@ -9,17 +10,25 @@ class ManagePostSettings extends ModalComponent
 {
     public int|Post $post;
 
-    public $slug;
+    public string $slug;
 
-    protected function rules()
+    protected function rules(): array
     {
+        if (! ($this->post instanceof Post)) {
+            return [];
+        }
+
         return [
             'slug' => ['required', 'string', 'max:255', 'unique:mito_posts,slug,'.$this->post['id']],
         ];
     }
 
-    public function save($propertyName)
+    public function save(string $propertyName): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->validateOnly($propertyName);
 
         if ($propertyName === 'slug') {
@@ -31,10 +40,10 @@ class ManagePostSettings extends ModalComponent
         $this->emitSelf('notify-saved', $propertyName);
     }
 
-    public function mount(Post $post)
+    public function mount(Post $post): void
     {
         $this->post = $post;
-        $this->slug = $post->slug;
+        $this->slug = $post->slug ?? '';
     }
 
     public static function modalMaxWidth(): string
@@ -42,7 +51,7 @@ class ManagePostSettings extends ModalComponent
         return 'md';
     }
 
-    public function render()
+    public function render(): View
     {
         return view('mito::livewire.manage-post-settings');
     }
