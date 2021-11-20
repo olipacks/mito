@@ -2,8 +2,6 @@
 
 namespace Mito\Http\Livewire;
 
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Livewire\WithFileUploads;

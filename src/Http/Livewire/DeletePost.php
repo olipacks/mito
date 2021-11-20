@@ -18,10 +18,14 @@ class DeletePost extends ModalComponent
     }
 
     /**
-     * @return \Illuminate\Http\RedirectResponse
+     * @return \Illuminate\Http\RedirectResponse|void
      */
     public function delete()
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->post->delete();
 
         return redirect()->to(route('mito.posts.index', ['type' => $this->type]));

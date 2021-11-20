@@ -14,6 +14,10 @@ class ManagePostSettings extends ModalComponent
 
     protected function rules(): array
     {
+        if (! ($this->post instanceof Post)) {
+            return [];
+        }
+
         return [
             'slug' => ['required', 'string', 'max:255', 'unique:mito_posts,slug,'.$this->post['id']],
         ];
@@ -21,6 +25,10 @@ class ManagePostSettings extends ModalComponent
 
     public function save(string $propertyName): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->validateOnly($propertyName);
 
         if ($propertyName === 'slug') {

@@ -2,9 +2,8 @@
 
 namespace Mito\Http\Livewire;
 
-use Illuminate\Http\UploadedFile;
-use Illuminate\View\View;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Livewire\Component;
 use Mito\Models\Post;
 
@@ -51,6 +50,10 @@ class EditPost extends Component
     public function updatedImage(): void
     {
         $imagePath = $this->storeImage($this->image);
+
+        if ($imagePath === false) {
+            return;
+        }
 
         $imageUrl = $this->getImageUrl($imagePath);
 

@@ -39,6 +39,10 @@ class UpdatePostStatusModal extends ModalComponent
 
     protected function publish(): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         if (is_null($this->post->slug)) {
             $this->post->fill([
                 'slug' => Str::slug($this->post->title),
@@ -56,6 +60,10 @@ class UpdatePostStatusModal extends ModalComponent
 
     protected function unpublish(): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->post->markAsDraft();
 
         $this->forceClose()->closeModal();
@@ -67,6 +75,10 @@ class UpdatePostStatusModal extends ModalComponent
 
     protected function schedule(): void
     {
+        if (! ($this->post instanceof Post)) {
+            return;
+        }
+
         $this->publishDateTime = "{$this->date} {$this->time}";
 
         $this->validate();
