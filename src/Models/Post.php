@@ -48,15 +48,17 @@ class Post extends Model
 
     public function getTitleAttribute(): string
     {
-        return Str::after(collect(explode(PHP_EOL, $this->markdown))
+        $firstNotEmptyLine = collect(explode(PHP_EOL, $this->markdown ?? ''))
             ->first(function ($value) {
                 return Str::of($value)->trim()->isNotEmpty();
-            }), '# ');
+            });
+
+        return Str::after($firstNotEmptyLine ?? '', '# ');
     }
 
     public function getExcerptAttribute(): string|null
     {
-        $markdownExcerpt = collect(explode(PHP_EOL, $this->markdown))
+        $markdownExcerpt = collect(explode(PHP_EOL, $this->markdown ?? ''))
             ->slice(1)
             ->first(function ($value) {
                 return Str::of($value)->trim()->isNotEmpty();
@@ -69,7 +71,7 @@ class Post extends Model
 
     public function getMarkdownWithoutTitleAttribute(): string
     {
-        return collect(explode(PHP_EOL, $this->markdown))
+        return collect(explode(PHP_EOL, $this->markdown ?? ''))
             ->slice(1)
             ->implode(PHP_EOL);
     }
@@ -97,7 +99,7 @@ class Post extends Model
 
     public function isEmpty(): bool
     {
-        return Str::of($this->markdown)->trim()->isEmpty();
+        return Str::of($this->markdown ?? '')->trim()->isEmpty();
     }
 
     public function isPublished(): bool

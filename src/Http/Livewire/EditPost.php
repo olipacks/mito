@@ -57,7 +57,7 @@ class EditPost extends Component
 
         $imageUrl = $this->getImageUrl($imagePath);
 
-        $this->post->markdown = Str::of($this->post->markdown)->append("![]({$imageUrl})");
+        $this->post->markdown = Str::of($this->post->markdown ?? '')->append("![]({$imageUrl})");
 
         $this->post->save();
 
