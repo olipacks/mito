@@ -21,7 +21,7 @@ class PostFactory extends Factory
         ];
     }
 
-    public function published()
+    public function published(): self
     {
         return $this->state([
             'status' =>  'published',
@@ -29,7 +29,7 @@ class PostFactory extends Factory
         ]);
     }
 
-    public function scheduled()
+    public function scheduled(): self
     {
         return $this->state([
             'status' =>  'scheduled',
@@ -37,14 +37,14 @@ class PostFactory extends Factory
         ]);
     }
 
-    public function draft()
+    public function draft(): self
     {
         return $this->state([
             'status' =>  'draft',
         ]);
     }
 
-    public function emptyDraft()
+    public function emptyDraft(): self
     {
         return $this->state([
             'markdown' => null,

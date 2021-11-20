@@ -2,10 +2,10 @@ includes:
     - ./vendor/nunomaduro/larastan/extension.neon
 
 parameters:
+    level: 6
     paths:
         - src
-
-    level: 5
+        - database
 
     universalObjectCratesClasses:
         - Illuminate\Routing\Route

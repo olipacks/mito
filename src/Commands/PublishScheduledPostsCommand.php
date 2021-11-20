@@ -9,7 +9,7 @@ class PublishScheduledPostsCommand extends Command
 {
     public $signature = 'mito:publish-scheduled-posts';
 
-    public function handle()
+    public function handle(): void
     {
         Post::scheduled()
             ->where('published_at', '<=', now())

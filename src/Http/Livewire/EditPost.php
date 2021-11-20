@@ -2,6 +2,8 @@
 
 namespace Mito\Http\Livewire;
 
+use Illuminate\Http\UploadedFile;
+use Illuminate\View\View;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Mito\Models\Post;
@@ -12,23 +14,26 @@ class EditPost extends Component
     use WithDraftCreation;
 
     public Post $post;
-    public $type;
+    public string $type;
+
+    /** @var \Illuminate\Http\UploadedFile */
     public $image;
 
+    /** @var array */
     protected $listeners = [
         'typeUpdated',
     ];
 
-    protected $rules = [
+    protected array $rules = [
         'post.markdown' => 'nullable|sometimes',
     ];
 
-    public function mount(Post $post)
+    public function mount(Post $post): void
     {
         $this->type = $post->status;
     }
 
-    public function updated($propertyName)
+    public function updated(string $propertyName): void
     {
         if ($this->post->isPublished()) {
             return;
@@ -43,7 +48,7 @@ class EditPost extends Component
         $this->post->save();
     }
 
-    public function updatedImage()
+    public function updatedImage(): void
     {
         $imagePath = $this->storeImage($this->image);
 
@@ -56,7 +61,7 @@ class EditPost extends Component
         $this->dispatchBrowserEvent('notify', 'Image added!');
     }
 
-    public function save()
+    public function save(): void
     {
         $this->validate();
 
@@ -65,12 +70,12 @@ class EditPost extends Component
         $this->dispatchBrowserEvent('notify', 'Saved!');
     }
 
-    public function typeUpdated($type)
+    public function typeUpdated(string $type): void
     {
         $this->type = $type;
     }
 
-    public function render()
+    public function render(): View
     {
         return view('mito::livewire.edit-post', [
             'posts' => Post::where('status', $this->type)->latest($this->type === 'published' ? 'published_at' : 'created_at')->get(),

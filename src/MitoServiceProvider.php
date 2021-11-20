@@ -28,14 +28,14 @@ class MitoServiceProvider extends PackageServiceProvider
             ->hasCommand(PublishScheduledPostsCommand::class);
     }
 
-    public function packageRegistered()
+    public function packageRegistered(): void
     {
         $this->app->afterResolving(BladeCompiler::class, function () {
             $this->registerLivewireComponents();
         });
     }
 
-    protected function registerLivewireComponents()
+    protected function registerLivewireComponents(): void
     {
         app(LivewireManager::class)->component('mito::posts.edit-post', EditPost::class);
         app(LivewireManager::class)->component('mito::posts.show-post', ShowPosts::class);

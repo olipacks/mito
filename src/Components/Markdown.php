@@ -16,17 +16,15 @@ use League\CommonMark\MarkdownConverterInterface;
 
 class Markdown extends Component
 {
-    protected $flavor;
+    protected string $flavor;
 
-    protected $htmlInput;
+    protected string $htmlInput;
 
-    protected $allowUnsafeLinks;
+    protected bool $allowUnsafeLinks;
 
-    protected $options;
+    protected array $options;
 
-    protected $anchors;
-
-    protected $url;
+    protected bool $anchors;
 
     public function __construct(
         string $flavor = 'default',
