@@ -20,5 +20,9 @@ parameters:
         #    paths:
         #        - tests/*
         # - '#should return \$this#'
+        - '#Call to an undefined method [a-zA-Z0-9\\_]+::layout\(\)#'
 
     checkMissingIterableValueType: false
+
+    databaseMigrationsPath:
+        - database/migrations
