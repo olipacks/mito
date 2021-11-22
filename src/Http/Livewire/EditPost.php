@@ -15,10 +15,14 @@ class EditPost extends Component
     public Post $post;
     public string $type;
 
-    /** @var \Illuminate\Http\UploadedFile */
+    /**
+     * @var \Illuminate\Http\UploadedFile
+     */
     public $image;
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $listeners = [
         'typeUpdated',
     ];
