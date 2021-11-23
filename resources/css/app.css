@@ -17,3 +17,9 @@
 .tippy-box {
     font-size: 12px;
 }
+
+@layer components {
+    file-attachment[hover] {
+        @apply border-2 border-dashed border-gray-200;
+    }
+}
