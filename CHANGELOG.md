@@ -2,6 +2,11 @@
 
 All notable changes to `mito` will be documented in this file.
 
+## 0.6.1 - 2021-11-22
+
+* improve PHPStan by @oliverds in https://github.com/mitophp/mito/pull/7
+* drag and drop images into editor in https://github.com/mitophp/mito/commit/7b589a2755347d000c33216bd8dca93c529577da
+
 ## 0.6.0 - 2021-11-19
 
 * Markdown toolbar by @oliverds in https://github.com/mitophp/mito/pull/6
