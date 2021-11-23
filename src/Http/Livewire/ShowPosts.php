@@ -12,7 +12,9 @@ class ShowPosts extends Component
 
     public string $type = 'draft';
 
-    /** @var array */
+    /**
+     * @var array
+     */
     protected $queryString = ['type'];
 
     public function render(): View
