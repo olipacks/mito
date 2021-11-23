@@ -1303,6 +1303,10 @@ file-attachment[hover] {
 .order-first {
 	order: -9999;
 }
+.mx-auto {
+	margin-left: auto;
+	margin-right: auto;
+}
 .ml-3 {
 	margin-left: 0.75rem;
 }
@@ -1378,6 +1382,66 @@ file-attachment[hover] {
 .h-4 {
 	height: 1rem;
 }
+.h-12 {
+	height: 3rem;
+}
+.h-0 {
+	height: 0px;
+}
+.h-px {
+	height: 1px;
+}
+.h-0\.5 {
+	height: 0.125rem;
+}
+.h-1 {
+	height: 0.25rem;
+}
+.h-1\.5 {
+	height: 0.375rem;
+}
+.h-2\.5 {
+	height: 0.625rem;
+}
+.h-3 {
+	height: 0.75rem;
+}
+.h-3\.5 {
+	height: 0.875rem;
+}
+.h-7 {
+	height: 1.75rem;
+}
+.h-8 {
+	height: 2rem;
+}
+.h-9 {
+	height: 2.25rem;
+}
+.h-10 {
+	height: 2.5rem;
+}
+.h-11 {
+	height: 2.75rem;
+}
+.h-16 {
+	height: 4rem;
+}
+.h-20 {
+	height: 5rem;
+}
+.h-24 {
+	height: 6rem;
+}
+.h-28 {
+	height: 7rem;
+}
+.h-32 {
+	height: 8rem;
+}
+.h-36 {
+	height: 9rem;
+}
 .min-h-screen {
 	min-height: 100vh;
 }
@@ -1411,6 +1475,9 @@ file-attachment[hover] {
 .w-4 {
 	width: 1rem;
 }
+.w-12 {
+	width: 3rem;
+}
 .w-48 {
 	width: 12rem;
 }
@@ -1419,6 +1486,9 @@ file-attachment[hover] {
 }
 .max-w-sm {
 	max-width: 24rem;
+}
+.max-w-xl {
+	max-width: 36rem;
 }
 .flex-1 {
 	flex: 1 1 0%;
@@ -1502,6 +1572,11 @@ file-attachment[hover] {
 	margin-right: calc(0.75rem * var(--tw-space-x-reverse));
 	margin-left: calc(0.75rem * calc(1 - var(--tw-space-x-reverse)));
 }
+.space-y-2 > :not([hidden]) ~ :not([hidden]) {
+	--tw-space-y-reverse: 0;
+	margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
+	margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
+}
 .space-y-5 > :not([hidden]) ~ :not([hidden]) {
 	--tw-space-y-reverse: 0;
 	margin-top: calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1569,6 +1644,9 @@ file-attachment[hover] {
 .border-0 {
 	border-width: 0px;
 }
+.border-2 {
+	border-width: 2px;
+}
 .border-l {
 	border-left-width: 1px;
 }
@@ -1577,6 +1655,9 @@ file-attachment[hover] {
 }
 .border-r-0 {
 	border-right-width: 0px;
+}
+.border-dashed {
+	border-style: dashed;
 }
 .border-gray-300 {
 	--tw-border-opacity: 1;
@@ -1623,6 +1704,10 @@ file-attachment[hover] {
 .bg-gray-50 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(250, 250, 249, var(--tw-bg-opacity));
+}
+.object-cover {
+	-o-object-fit: cover;
+	   object-fit: cover;
 }
 .p-4 {
 	padding: 1rem;
@@ -1704,6 +1789,9 @@ file-attachment[hover] {
 .pb-6 {
 	padding-bottom: 1.5rem;
 }
+.pl-1 {
+	padding-left: 0.25rem;
+}
 .text-left {
 	text-align: left;
 }
@@ -1772,9 +1860,16 @@ file-attachment[hover] {
 	--tw-text-opacity: 1;
 	color: rgba(87, 83, 78, var(--tw-text-opacity));
 }
+.text-indigo-600 {
+	--tw-text-opacity: 1;
+	color: rgba(79, 70, 229, var(--tw-text-opacity));
+}
 .text-red-600 {
 	--tw-text-opacity: 1;
 	color: rgba(220, 38, 38, var(--tw-text-opacity));
+}
+.underline {
+	text-decoration: underline;
 }
 .antialiased {
 	-webkit-font-smoothing: antialiased;
@@ -1905,6 +2000,10 @@ file-attachment[hover] {
 .tippy-box {
     font-size: 12px;
 }
+.focus-within\:outline-none:focus-within {
+	outline: 2px solid transparent;
+	outline-offset: 2px;
+}
 .focus-within\:ring-2:focus-within {
 	--tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
 	--tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
@@ -1916,6 +2015,21 @@ file-attachment[hover] {
 .focus-within\:ring-purple-600:focus-within {
 	--tw-ring-opacity: 1;
 	--tw-ring-color: rgba(124, 58, 237, var(--tw-ring-opacity));
+}
+.focus-within\:ring-indigo-500:focus-within {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(99, 102, 241, var(--tw-ring-opacity));
+}
+.focus-within\:ring-red-500:focus-within {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(239, 68, 68, var(--tw-ring-opacity));
+}
+.focus-within\:ring-gray-500:focus-within {
+	--tw-ring-opacity: 1;
+	--tw-ring-color: rgba(120, 113, 108, var(--tw-ring-opacity));
+}
+.focus-within\:ring-offset-2:focus-within {
+	--tw-ring-offset-width: 2px;
 }
 .hover\:border-gray-300:hover {
 	--tw-border-opacity: 1;
@@ -1949,9 +2063,17 @@ file-attachment[hover] {
 	--tw-text-opacity: 1;
 	color: rgba(41, 37, 36, var(--tw-text-opacity));
 }
+.hover\:text-indigo-500:hover {
+	--tw-text-opacity: 1;
+	color: rgba(99, 102, 241, var(--tw-text-opacity));
+}
 .hover\:text-gray-700:hover {
 	--tw-text-opacity: 1;
 	color: rgba(68, 64, 60, var(--tw-text-opacity));
+}
+.hover\:text-red-500:hover {
+	--tw-text-opacity: 1;
+	color: rgba(239, 68, 68, var(--tw-text-opacity));
 }
 .focus\:z-10:focus {
 	z-index: 10;
