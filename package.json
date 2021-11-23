@@ -22,6 +22,7 @@
         "tailwindcss": "^2.2.2"
     },
     "dependencies": {
+        "@github/file-attachment-element": "^3.0.1",
         "@github/markdown-toolbar-element": "^2.0.0",
         "tippy.js": "^6.3.7"
     }
