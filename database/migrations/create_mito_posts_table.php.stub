@@ -15,6 +15,7 @@ return new class extends Migration
             $table->text('markdown')->nullable();
             $table->string('status')->default('draft');
             $table->string('custom_excerpt')->nullable();
+            $table->string('feature_image_path', 2048)->nullable();
             $table->json('meta')->nullable();
             $table->dateTime('published_at')->nullable();
 

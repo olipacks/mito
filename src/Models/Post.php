@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Casts\AsCollection;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\MarkdownConverterInterface;
@@ -146,5 +148,38 @@ class Post extends Model
         return new CommonMarkConverter([
             'html_input' => 'strip',
         ]);
+    }
+
+    public function getFeatureImageUrlAttribute(): ?string
+    {
+        return $this->feature_image_path
+                    ? $this->getImageUrl($this->feature_image_path)
+                    : null;
+    }
+
+    public function storeImage(UploadedFile $image): string|false
+    {
+        return $image->storePublicly(
+            'images',
+            ['disk' => $this->imagesDisk()]
+        );
+    }
+
+    public function getImageUrl(string $imagePath): string
+    {
+        return Storage::disk($this->imagesDisk())->url($imagePath);
+    }
+
+    protected function imagesDisk(): string
+    {
+        if (isset($_ENV['VAPOR_ARTIFACT_NAME'])) {
+            return 's3';
+        }
+
+        if (is_string($disk = config('mito.images_disk', 'public'))) {
+            return $disk;
+        }
+
+        return 'public';
     }
 }

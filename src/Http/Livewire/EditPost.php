@@ -5,11 +5,12 @@ namespace Mito\Http\Livewire;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 use Mito\Models\Post;
 
 class EditPost extends Component
 {
-    use HasImages;
+    use WithFileUploads;
     use WithDraftCreation;
 
     public Post $post;
@@ -53,13 +54,13 @@ class EditPost extends Component
 
     public function updatedImage(): void
     {
-        $imagePath = $this->storeImage($this->image);
+        $imagePath = $this->post->storeImage($this->image);
 
         if ($imagePath === false) {
             return;
         }
 
-        $imageUrl = $this->getImageUrl($imagePath);
+        $imageUrl = $this->post->getImageUrl($imagePath);
 
         $this->post->markdown = Str::of($this->post->markdown ?? '')->append("![]({$imageUrl})");
 

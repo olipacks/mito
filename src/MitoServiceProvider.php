@@ -8,7 +8,6 @@ use Mito\Commands\PublishScheduledPostsCommand;
 use Mito\Components\Markdown;
 use Mito\Http\Livewire\DeletePost;
 use Mito\Http\Livewire\EditPost;
-use Mito\Http\Livewire\FeatureImage;
 use Mito\Http\Livewire\ManagePostSettings;
 use Mito\Http\Livewire\ShowPosts;
 use Mito\Http\Livewire\UpdatePostStatusModal;
@@ -43,6 +42,5 @@ class MitoServiceProvider extends PackageServiceProvider
         app(LivewireManager::class)->component('mito::posts.manage-post-settings', ManagePostSettings::class);
         app(LivewireManager::class)->component('mito::posts.delete-post', DeletePost::class);
         app(LivewireManager::class)->component('mito::posts.update-post-status-modal', UpdatePostStatusModal::class);
-        app(LivewireManager::class)->component('mito::feature-image', FeatureImage::class);
     }
 }

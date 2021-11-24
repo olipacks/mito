@@ -1539,6 +1539,9 @@ file-attachment[hover] {
 .resize-none {
 	resize: none;
 }
+.flex-row-reverse {
+	flex-direction: row-reverse;
+}
 .flex-col {
 	flex-direction: column;
 }
