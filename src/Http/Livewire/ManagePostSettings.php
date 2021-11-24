@@ -61,7 +61,7 @@ class ManagePostSettings extends ModalComponent
         }
 
         $this->post->fill([
-            'feature_image_path' => $this->post->storeImage($this->image)
+            'feature_image_path' => $this->post->storeImage($this->image),
         ])->save();
 
         $this->emitSelf('notify-saved', 'image');
