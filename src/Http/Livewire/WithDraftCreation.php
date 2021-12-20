@@ -1,8 +1,8 @@
 <?php
 
-namespace Mito\Http\Livewire;
+namespace Olipacks\Mito\Http\Livewire;
 
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 
 trait WithDraftCreation
 {

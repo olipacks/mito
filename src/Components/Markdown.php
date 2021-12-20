@@ -5,7 +5,7 @@
  * @link https://github.com/blade-ui-kit/blade-ui-kit
  */
 
-namespace Mito\Components;
+namespace Olipacks\Mito\Components;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Str;

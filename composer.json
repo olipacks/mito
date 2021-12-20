@@ -2,11 +2,11 @@
     "name": "olipacks/mito",
     "description": "A minimal Laravel package for blog publishing",
     "keywords": [
-        "mitophp",
+        "olipacks",
         "laravel",
         "mito"
     ],
-    "homepage": "https://github.com/mitophp/mito",
+    "homepage": "https://github.com/olipacks/mito",
     "license": "MIT",
     "authors": [
         {
@@ -34,13 +34,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Mito\\": "src",
-            "Mito\\Database\\Factories\\": "database/factories"
+            "Olipacks\\Mito\\": "src",
+            "Olipacks\\Mito\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests"
+            "Olipacks\\Mito\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -53,7 +53,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Mito\\MitoServiceProvider"
+                "Olipacks\\Mito\\MitoServiceProvider"
             ]
         }
     },

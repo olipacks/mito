@@ -1,7 +1,7 @@
 <?php
 
-use Mito\Commands\PublishScheduledPostsCommand;
-use Mito\Models\Post;
+use Olipacks\Mito\Commands\PublishScheduledPostsCommand;
+use Olipacks\Mito\Models\Post;
 use function Pest\Laravel\artisan;
 use Symfony\Component\Console\Command\Command;
 

@@ -1,9 +1,9 @@
 <?php
 
-namespace Mito\Commands;
+namespace Olipacks\Mito\Commands;
 
 use Illuminate\Console\Command;
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 
 class PublishScheduledPostsCommand extends Command
 {

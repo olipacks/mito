@@ -1,7 +1,7 @@
 <?php
 
-use Mito\Http\Livewire\ManagePostSettings;
-use Mito\Models\Post;
+use Olipacks\Mito\Http\Livewire\ManagePostSettings;
+use Olipacks\Mito\Models\Post;
 
 beforeEach(function () {
     $this->post = Post::factory()->create();

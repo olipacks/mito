@@ -1,10 +1,10 @@
 <?php
 
-namespace Tests;
+namespace Olipacks\Mito\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
-use Mito\MitoServiceProvider;
+use Olipacks\Mito\MitoServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -14,7 +14,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'Mito\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => 'Olipacks\\Mito\\Database\\Factories\\'.class_basename($modelName).'Factory'
         );
     }
 

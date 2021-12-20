@@ -1,7 +1,7 @@
 <?php
 
-use Mito\Http\Livewire\DeletePost;
-use Mito\Models\Post;
+use Olipacks\Mito\Http\Livewire\DeletePost;
+use Olipacks\Mito\Models\Post;
 
 it('can delete a post', function () {
     $post = Post::factory()->create();

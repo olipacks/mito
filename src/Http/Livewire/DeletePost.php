@@ -1,10 +1,10 @@
 <?php
 
-namespace Mito\Http\Livewire;
+namespace Olipacks\Mito\Http\Livewire;
 
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 
 class DeletePost extends ModalComponent
 {

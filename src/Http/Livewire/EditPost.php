@@ -1,11 +1,11 @@
 <?php
 
-namespace Mito\Http\Livewire;
+namespace Olipacks\Mito\Http\Livewire;
 
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use Livewire\Component;
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 
 class EditPost extends Component
 {

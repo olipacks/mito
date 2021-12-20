@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Mito\Http\Livewire\EditPost;
-use Mito\Http\Livewire\ShowPosts;
-use Mito\Http\Middleware\EnsureUserIsAuthorized;
+use Olipacks\Mito\Http\Livewire\EditPost;
+use Olipacks\Mito\Http\Livewire\ShowPosts;
+use Olipacks\Mito\Http\Middleware\EnsureUserIsAuthorized;
 
 Route::prefix('mito')
     ->middleware(['web', EnsureUserIsAuthorized::class])

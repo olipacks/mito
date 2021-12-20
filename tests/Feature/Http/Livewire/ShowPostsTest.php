@@ -1,7 +1,7 @@
 <?php
 
-use Mito\Http\Livewire\ShowPosts;
-use Mito\Models\Post;
+use Olipacks\Mito\Http\Livewire\ShowPosts;
+use Olipacks\Mito\Models\Post;
 
 it('can show all drafts', function () {
     $drafts = Post::factory()->draft()->count(3)->create();

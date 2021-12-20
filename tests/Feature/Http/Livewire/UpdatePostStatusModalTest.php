@@ -1,7 +1,7 @@
 <?php
 
-use Mito\Http\Livewire\UpdatePostStatusModal;
-use Mito\Models\Post;
+use Olipacks\Mito\Http\Livewire\UpdatePostStatusModal;
+use Olipacks\Mito\Models\Post;
 use function Pest\Livewire\livewire;
 
 beforeEach(function () {

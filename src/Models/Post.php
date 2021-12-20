@@ -1,6 +1,6 @@
 <?php
 
-namespace Mito\Models;
+namespace Olipacks\Mito\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\MarkdownConverterInterface;
-use Mito\Database\Factories\PostFactory;
+use Olipacks\Mito\Database\Factories\PostFactory;
 
 class Post extends Model
 {

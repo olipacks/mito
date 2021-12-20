@@ -1,9 +1,9 @@
 <?php
 
-namespace Mito\Database\Factories;
+namespace Olipacks\Mito\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 use Illuminate\Support\Str;
 
 class PostFactory extends Factory

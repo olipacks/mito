@@ -1,6 +1,6 @@
 <?php
 
-namespace Mito\Http\Livewire;
+namespace Olipacks\Mito\Http\Livewire;
 
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;

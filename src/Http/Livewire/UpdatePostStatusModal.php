@@ -1,12 +1,12 @@
 <?php
 
-namespace Mito\Http\Livewire;
+namespace Olipacks\Mito\Http\Livewire;
 
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 use LivewireUI\Modal\ModalComponent;
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 
 class UpdatePostStatusModal extends ModalComponent
 {

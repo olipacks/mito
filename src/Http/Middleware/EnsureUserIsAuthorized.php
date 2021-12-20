@@ -1,6 +1,6 @@
 <?php
 
-namespace Mito\Http\Middleware;
+namespace Olipacks\Mito\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Gate;

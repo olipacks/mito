@@ -1,10 +1,10 @@
 <?php
 
-namespace Mito\Http\Livewire;
+namespace Olipacks\Mito\Http\Livewire;
 
 use Illuminate\View\View;
 use Livewire\Component;
-use Mito\Models\Post;
+use Olipacks\Mito\Models\Post;
 
 class ShowPosts extends Component
 {

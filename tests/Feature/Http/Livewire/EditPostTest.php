@@ -3,8 +3,8 @@
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
-use Mito\Http\Livewire\EditPost;
-use Mito\Models\Post;
+use Olipacks\Mito\Http\Livewire\EditPost;
+use Olipacks\Mito\Models\Post;
 
 beforeEach(function () {
     $this->draft = Post::factory()->draft()->create();
