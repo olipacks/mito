@@ -1,6 +1,8 @@
 <?php
 
-namespace Olipacks\Mito;;
+namespace Olipacks\Mito;
+
+;
 
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\LivewireManager;
