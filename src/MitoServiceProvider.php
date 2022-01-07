@@ -2,8 +2,6 @@
 
 namespace Olipacks\Mito;
 
-;
-
 use Illuminate\View\Compilers\BladeCompiler;
 use Livewire\LivewireManager;
 use Olipacks\Mito\Commands\PublishScheduledPostsCommand;
@@ -27,6 +25,7 @@ class MitoServiceProvider extends PackageServiceProvider
             ->hasAssets()
             ->hasRoute('web')
             ->hasMigration('create_mito_posts_table')
+            ->hasMigration('create_mito_tags_tables')
             ->hasCommand(PublishScheduledPostsCommand::class);
     }
 
