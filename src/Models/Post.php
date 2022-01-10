@@ -31,6 +31,25 @@ class Post extends Model
         return PostFactory::new();
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'mito_posts_tags', 'post_id', 'tag_id');
+    }
+
+    public function scopeHasTag($query, string $slug): void
+    {
+        $query->whereHas('tags', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        });
+    }
+
+    public function scopeDoesntHaveTag($query, string $slug): void
+    {
+        $query->whereDoesntHave('tags', function ($query) use ($slug) {
+            $query->where('slug', $slug);
+        });
+    }
+
     public function scopePublished(Builder $query): void
     {
         $query->where('status', 'published');
